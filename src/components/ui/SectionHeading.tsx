@@ -35,11 +35,11 @@ export function SectionHeading({
           {label}
         </p>
       )}
-      <h2 className="text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
+      <h2 className="text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-base leading-relaxed text-zinc-400 sm:text-lg">
+        <p className="mt-4 text-base leading-relaxed text-[var(--fg-4)] sm:text-lg">
           {subtitle}
         </p>
       )}

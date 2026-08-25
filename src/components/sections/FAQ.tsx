@@ -20,20 +20,20 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-white/[0.06] last:border-b-0">
+    <div className="border-b border-[var(--line)] last:border-b-0">
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-zinc-100"
+        className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-[var(--fg-1)]"
         aria-expanded={isOpen}
       >
-        <span className="text-sm font-medium text-zinc-200 sm:text-base">
+        <span className="text-sm font-medium text-[var(--fg-2)] sm:text-base">
           {question}
         </span>
         <ChevronDown
           size={18}
           className={cn(
-            "shrink-0 text-zinc-500 transition-transform duration-200",
+            "shrink-0 text-[var(--fg-4)] transition-transform duration-200",
             isOpen && "rotate-180"
           )}
         />
@@ -47,7 +47,7 @@ function FAQItem({
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm leading-relaxed text-zinc-500">
+            <p className="pb-5 text-sm leading-relaxed text-[var(--fg-4)]">
               {answer}
             </p>
           </motion.div>
@@ -62,11 +62,11 @@ export function FAQ() {
   const { fadeUp } = useMotionSafe();
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-24">
       <div className="section-padding mx-auto max-w-3xl">
         <SectionHeading title="Perguntas frequentes" align="center" className="mb-12" />
 
-        <motion.div {...fadeUp} className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-6">
+        <motion.div {...fadeUp} className="rounded-xl border border-[var(--line)] bg-[var(--panel-2)] px-6">
           {FAQ_ITEMS.map((item, i) => (
             <FAQItem
               key={item.question}

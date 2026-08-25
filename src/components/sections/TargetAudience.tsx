@@ -12,7 +12,7 @@ export function TargetAudience() {
   const { fadeUp, stagger } = useMotionSafe();
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-24">
       <div className="section-padding mx-auto max-w-7xl">
         <SectionHeading
           title="Se você tem um problema, provavelmente podemos construir a solução."
@@ -30,13 +30,13 @@ export function TargetAudience() {
                 transition={{ ...fadeUp.transition, delay: i * stagger }}
                 className="glass glass-hover rounded-xl p-6 transition-all duration-300 hover:-translate-y-0.5"
               >
-                <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-lg bg-white/[0.04] text-zinc-400">
+                <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--panel-hover)] text-[var(--fg-4)]">
                   <Icon size={18} />
                 </div>
-                <h3 className="mb-2 text-base font-medium text-zinc-100">
+                <h3 className="mb-2 text-base font-medium text-[var(--fg-1)]">
                   {audience.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-zinc-500">
+                <p className="text-sm leading-relaxed text-[var(--fg-4)]">
                   {audience.description}
                 </p>
               </motion.article>

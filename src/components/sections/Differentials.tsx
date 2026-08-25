@@ -9,8 +9,8 @@ export function Differentials() {
   const { fadeUp, stagger } = useMotionSafe();
 
   return (
-    <section id="diferenciais" className="relative overflow-hidden py-20 sm:py-28">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-indigo-500/[0.03] via-transparent to-transparent" />
+    <section id="diferenciais" className="relative overflow-hidden py-16 sm:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--accent-glow)] via-transparent to-transparent" />
 
       <div className="section-padding relative mx-auto max-w-7xl">
         <SectionHeading
@@ -25,18 +25,18 @@ export function Differentials() {
               key={item.number}
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: i * stagger }}
-              className="group relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]"
+              className="group relative overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--panel-2)] p-8 transition-all duration-300 hover:border-[var(--line-hover)] hover:bg-[var(--panel-hover)]"
             >
-              <span className="font-mono text-4xl font-bold text-white/[0.06] transition-colors group-hover:text-indigo-500/20">
+              <span className="font-mono text-4xl font-bold text-[var(--ghost)] transition-colors group-hover:text-[var(--fg-4)]">
                 {item.number}
               </span>
-              <h3 className="mt-2 text-lg font-medium text-zinc-100">
+              <h3 className="mt-2 text-lg font-medium text-[var(--fg-1)]">
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-500">
+              <p className="mt-2 text-sm leading-relaxed text-[var(--fg-4)]">
                 {item.description}
               </p>
-              <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-indigo-500/5 blur-2xl transition-opacity group-hover:opacity-100 opacity-0" />
+              <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-[var(--accent-glow)] blur-2xl transition-opacity group-hover:opacity-100 opacity-0" />
             </motion.div>
           ))}
         </div>

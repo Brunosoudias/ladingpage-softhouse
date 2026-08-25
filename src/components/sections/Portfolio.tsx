@@ -25,8 +25,8 @@ function ProjectMockup({
         gradient
       )}
     >
-      <div className="absolute inset-3 rounded-md border border-white/[0.08] bg-[#0c0c0e]/80 backdrop-blur-sm">
-        <div className="flex items-center gap-1.5 border-b border-white/[0.06] px-3 py-2">
+      <div className="absolute inset-3 rounded-md border border-[var(--line-strong)] bg-[#0c0c0e]/80 backdrop-blur-sm">
+        <div className="flex items-center gap-1.5 border-b border-[var(--line)] px-3 py-2">
           <div className="h-1.5 w-1.5 rounded-full bg-red-400/50" />
           <div className="h-1.5 w-1.5 rounded-full bg-amber-400/50" />
           <div className="h-1.5 w-1.5 rounded-full bg-emerald-400/50" />
@@ -43,7 +43,7 @@ function ProjectMockup({
           </div>
           <div className="grid grid-cols-3 gap-2">
             {[1, 2, 3].map((n) => (
-              <div key={n} className="rounded bg-white/[0.04] p-2">
+              <div key={n} className="rounded bg-[var(--panel-hover)] p-2">
                 <div
                   className="mb-1 h-8 rounded"
                   style={{ backgroundColor: `${accent}10` }}
@@ -52,7 +52,7 @@ function ProjectMockup({
               </div>
             ))}
           </div>
-          <div className="mt-2 h-12 rounded bg-white/[0.03]" />
+          <div className="mt-2 h-12 rounded bg-[var(--panel-3)]" />
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@ function ProjectMockup({
 function ProjectVisual({ project }: { project: PortfolioProject }) {
   if (project.image) {
     return (
-      <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-white/[0.06] bg-[#0c0c0e]">
+      <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-[var(--line)] bg-[#0c0c0e]">
         <Image
           src={project.image}
           alt={`Preview do projeto ${project.name}`}
@@ -100,24 +100,24 @@ function ProjectCard({
     <motion.article
       {...fadeUp}
       transition={{ ...fadeUp.transition, delay: index * stagger }}
-      className="group overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]"
+      className="group overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--panel-2)] transition-all duration-300 hover:border-[var(--line-hover)] hover:bg-[var(--panel-hover)]"
     >
       <div className="p-4">
         <ProjectVisual project={project} />
       </div>
-      <div className="border-t border-white/[0.06] p-5">
-        <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-600">
+      <div className="border-t border-[var(--line)] p-5">
+        <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--fg-5)]">
           {project.category}
         </span>
-        <h3 className="mt-1 text-lg font-medium text-zinc-100">{project.name}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-zinc-500">
+        <h3 className="mt-1 text-lg font-medium text-[var(--fg-1)]">{project.name}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-[var(--fg-4)]">
           {project.description}
         </p>
         <div className="mt-3 flex flex-wrap gap-1.5">
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="rounded-md bg-white/[0.04] px-2 py-0.5 font-mono text-[10px] text-zinc-500"
+              className="rounded-md bg-[var(--panel-hover)] px-2 py-0.5 font-mono text-[10px] text-[var(--fg-4)]"
             >
               {tech}
             </span>
@@ -128,7 +128,7 @@ function ProjectCard({
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-1.5 text-sm text-zinc-400 transition-colors group-hover:text-indigo-400"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm text-[var(--fg-4)] transition-colors group-hover:text-[var(--accent-text)]"
           >
             Ver projeto
             <ArrowUpRight
@@ -137,7 +137,7 @@ function ProjectCard({
             />
           </a>
         ) : (
-          <span className="mt-4 inline-block text-sm text-zinc-600">Em breve</span>
+          <span className="mt-4 inline-block text-sm text-[var(--fg-5)]">Em breve</span>
         )}
       </div>
     </motion.article>
@@ -153,7 +153,7 @@ export function Portfolio() {
   }
 
   return (
-    <section id="projetos" className="py-20 sm:py-28">
+    <section id="projetos" className="py-16 sm:py-24">
       <div className="section-padding mx-auto max-w-7xl">
         <SectionHeading
           title="Projetos que transformam ideias em produtos."

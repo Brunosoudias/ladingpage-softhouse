@@ -32,7 +32,7 @@ export function Quality() {
   const { fadeUp, stagger } = useMotionSafe();
 
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-24">
       <div className="section-padding mx-auto max-w-7xl">
         <SectionHeading
           title="Software desenvolvido para funcionar hoje e continuar funcionando amanhã."
@@ -48,10 +48,10 @@ export function Quality() {
                 key={item}
                 {...fadeUp}
                 transition={{ ...fadeUp.transition, delay: i * stagger }}
-                className="flex items-center gap-3 rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3.5 transition-colors hover:border-white/[0.1]"
+                className="flex items-center gap-3 rounded-lg border border-[var(--line)] bg-[var(--panel-2)] px-4 py-3.5 transition-colors hover:border-[var(--line-hover)]"
               >
-                <Icon size={16} className="shrink-0 text-zinc-600" />
-                <span className="text-sm text-zinc-400">{item}</span>
+                <Icon size={16} className="shrink-0 text-[var(--fg-5)]" />
+                <span className="text-sm text-[var(--fg-4)]">{item}</span>
               </motion.div>
             );
           })}

@@ -7,10 +7,10 @@ type ButtonProps = React.ComponentProps<"a"> & {
 
 const variants = {
   primary:
-    "bg-white text-zinc-950 hover:bg-zinc-100 shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_1px_2px_rgba(0,0,0,0.3)]",
+    "bg-[var(--btn-bg)] text-[var(--btn-fg)] hover:bg-[var(--btn-bg-hover)] shadow-[0_0_0_1px_var(--btn-ring),0_1px_2px_rgba(0,0,0,0.3)]",
   secondary:
-    "bg-transparent text-zinc-100 border border-white/10 hover:border-white/20 hover:bg-white/[0.04]",
-  ghost: "bg-transparent text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.04]",
+    "bg-transparent text-[var(--fg-1)] border border-[var(--line-strong)] hover:border-[var(--line-hover)] hover:bg-[var(--panel-hover)]",
+  ghost: "bg-transparent text-[var(--fg-4)] hover:text-[var(--fg-1)] hover:bg-[var(--panel-hover)]",
 };
 
 const sizes = {

@@ -9,7 +9,7 @@ export function Technology() {
   const { fadeUp, stagger } = useMotionSafe();
 
   return (
-    <section className="border-y border-white/[0.06] py-20 sm:py-28">
+    <section className="border-y border-[var(--line)] py-16 sm:py-24">
       <div className="section-padding mx-auto max-w-7xl">
         <SectionHeading
           title="Tecnologia certa para cada desafio."
@@ -27,7 +27,7 @@ export function Technology() {
               key={tech}
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: i * stagger }}
-              className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-2 font-mono text-sm text-zinc-400 transition-all duration-200 hover:border-white/[0.12] hover:text-zinc-200"
+              className="rounded-lg border border-[var(--line)] bg-[var(--panel-2)] px-4 py-2 font-mono text-sm text-[var(--fg-4)] transition-all duration-200 hover:border-[var(--line-hover)] hover:text-[var(--fg-2)]"
             >
               {tech}
             </motion.span>

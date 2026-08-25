@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08080a;
+  /* Dark theme (default) */
+  --background: #0b0b0f;
+  --background-alt: #060608;
   --foreground: #fafafa;
-  --muted: #a1a1aa;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.14);
-  --surface: rgba(255, 255, 255, 0.03);
-  --surface-hover: rgba(255, 255, 255, 0.06);
-  --accent: #6366f1;
-  --accent-light: #818cf8;
-  --accent-glow: rgba(99, 102, 241, 0.15);
-  --gradient-start: #6366f1;
-  --gradient-end: #8b5cf6;
+
+  --fg-1: #f4f4f5;
+  --fg-2: #e4e4e7;
+  --fg-3: #d4d4d8;
+  --fg-4: #b0b0b9;
+  --fg-5: #8a8a93;
+  --fg-6: #6b6b74;
+  --ghost: rgba(255, 255, 255, 0.06);
+
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.13);
+  --line-hover: rgba(255, 255, 255, 0.2);
+  --line-soft: rgba(255, 255, 255, 0.1);
+
+  --panel-1: rgba(255, 255, 255, 0.025);
+  --panel-2: rgba(255, 255, 255, 0.035);
+  --panel-3: rgba(255, 255, 255, 0.045);
+  --panel-hover: rgba(255, 255, 255, 0.06);
+  --panel-opaque: #18181b;
+
+  --header-bg: rgba(11, 11, 15, 0.8);
+  --header-bg-solid: rgba(11, 11, 15, 0.97);
+
+  --btn-bg: #ffffff;
+  --btn-bg-hover: #f4f4f5;
+  --btn-fg: #09090b;
+  --btn-ring: rgba(255, 255, 255, 0.1);
+
+  --accent: #e4e4e7;
+  --accent-light: #f4f4f5;
+  --accent-text: #d4d4d8;
+  --accent-glow: rgba(255, 255, 255, 0.08);
+  --gradient-start: #e4e4e7;
+  --gradient-end: #a1a1aa;
+  --gradient-text-1: #e4e4e7;
+  --gradient-text-2: #a1a1aa;
+  --selection: rgba(161, 161, 170, 0.35);
+
+  --grid-line: rgba(255, 255, 255, 0.03);
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --background: #ffffff;
+  --background-alt: #f4f4f5;
+  --foreground: #0a0a0c;
+
+  --fg-1: #18181b;
+  --fg-2: #27272a;
+  --fg-3: #3f3f46;
+  --fg-4: #52525b;
+  --fg-5: #71717a;
+  --fg-6: #8b8b93;
+  --ghost: rgba(9, 9, 11, 0.05);
+
+  --line: rgba(9, 9, 11, 0.1);
+  --line-strong: rgba(9, 9, 11, 0.14);
+  --line-hover: rgba(9, 9, 11, 0.22);
+  --line-soft: rgba(9, 9, 11, 0.08);
+
+  --panel-1: rgba(9, 9, 11, 0.02);
+  --panel-2: rgba(9, 9, 11, 0.03);
+  --panel-3: rgba(9, 9, 11, 0.04);
+  --panel-hover: rgba(9, 9, 11, 0.06);
+  --panel-opaque: #ffffff;
+
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --header-bg-solid: rgba(255, 255, 255, 0.97);
+
+  --btn-bg: #0a0a0c;
+  --btn-bg-hover: #27272a;
+  --btn-fg: #ffffff;
+  --btn-ring: rgba(9, 9, 11, 0.1);
+
+  --accent: #27272a;
+  --accent-light: #18181b;
+  --accent-text: #3f3f46;
+  --accent-glow: rgba(9, 9, 11, 0.05);
+  --gradient-start: #27272a;
+  --gradient-end: #52525b;
+  --gradient-text-1: #27272a;
+  --gradient-text-2: #52525b;
+  --selection: rgba(113, 113, 122, 0.3);
+
+  --grid-line: rgba(9, 9, 11, 0.035);
+
+  color-scheme: light;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-surface: var(--surface);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
   --font-sans: var(--font-geist-sans);
@@ -54,11 +131,12 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 ::selection {
-  background: rgba(99, 102, 241, 0.35);
-  color: #fff;
+  background: var(--selection);
+  color: var(--foreground);
 }
 
 :focus-visible {
@@ -67,7 +145,12 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #e4e4e7 0%, #a1a1aa 50%, #e4e4e7 100%);
+  background: linear-gradient(
+    135deg,
+    var(--gradient-text-1) 0%,
+    var(--gradient-text-2) 50%,
+    var(--gradient-text-1) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -81,20 +164,28 @@ body {
 }
 
 .glass {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--panel-3);
+  border: 1px solid var(--line-strong);
   backdrop-filter: blur(12px);
 }
 
 .glass-hover:hover {
-  background: var(--surface-hover);
-  border-color: var(--border-hover);
+  background: var(--panel-hover);
+  border-color: var(--line-hover);
+}
+
+/* Painel "IDE/dashboard" da ilustração do Hero — fica sempre escuro, como um
+   mockup de editor de código, independente do tema da página. */
+.glass-dark {
+  background: rgba(24, 24, 27, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
 }
 
 .grid-bg {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 

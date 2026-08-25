@@ -11,8 +11,8 @@ export function Problems() {
   const { fadeUp, stagger } = useMotionSafe();
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-28">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-violet-500/[0.03] to-indigo-500/[0.03]" />
+    <section className="relative overflow-hidden py-16 sm:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[var(--accent-glow)] to-[var(--accent-glow)]" />
 
       <div className="section-padding relative mx-auto max-w-7xl">
         <SectionHeading
@@ -27,10 +27,10 @@ export function Problems() {
               key={problem}
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: i * stagger }}
-              className="flex items-start gap-3 rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3.5 transition-colors hover:border-white/[0.1] hover:bg-white/[0.04]"
+              className="flex items-start gap-3 rounded-lg border border-[var(--line)] bg-[var(--panel-2)] px-4 py-3.5 transition-colors hover:border-[var(--line-hover)] hover:bg-[var(--panel-hover)]"
             >
-              <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-zinc-600" />
-              <p className="text-sm text-zinc-400">&ldquo;{problem}&rdquo;</p>
+              <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[var(--fg-5)]" />
+              <p className="text-sm text-[var(--fg-4)]">&ldquo;{problem}&rdquo;</p>
             </motion.div>
           ))}
         </div>
@@ -40,7 +40,7 @@ export function Problems() {
           transition={{ ...fadeUp.transition, delay: 0.5 }}
           className="mt-14 text-center"
         >
-          <p className="text-xl font-medium text-zinc-200 sm:text-2xl">
+          <p className="text-xl font-medium text-[var(--fg-2)] sm:text-2xl">
             Nós podemos transformar isso em uma{" "}
             <span className="gradient-accent">solução digital.</span>
           </p>

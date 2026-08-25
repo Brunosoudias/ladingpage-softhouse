@@ -67,7 +67,7 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <section id="contato" className="py-20 sm:py-28">
+      <section id="contato" className="py-16 sm:py-24">
         <div className="section-padding mx-auto max-w-xl">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -75,10 +75,10 @@ export function ContactForm() {
             className="rounded-xl border border-emerald-500/20 bg-emerald-500/[0.05] p-10 text-center"
           >
             <CheckCircle2 size={48} className="mx-auto text-emerald-400" />
-            <h2 className="mt-4 text-xl font-semibold text-zinc-100">
+            <h2 className="mt-4 text-xl font-semibold text-[var(--fg-1)]">
               Mensagem enviada com sucesso!
             </h2>
-            <p className="mt-2 text-sm text-zinc-400">
+            <p className="mt-2 text-sm text-[var(--fg-4)]">
               Recebemos seu projeto. Entraremos em contato em breve para
               entender melhor suas necessidades.
             </p>
@@ -89,7 +89,7 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contato" className="py-20 sm:py-28">
+    <section id="contato" className="py-16 sm:py-24">
       <div className="section-padding mx-auto max-w-2xl">
         <SectionHeading
           title="Vamos conversar sobre seu projeto."
@@ -101,12 +101,12 @@ export function ContactForm() {
         <motion.form
           {...fadeUp}
           onSubmit={handleSubmit}
-          className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 sm:p-8"
+          className="rounded-xl border border-[var(--line)] bg-[var(--panel-2)] p-6 sm:p-8"
           noValidate
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <label htmlFor="name" className="mb-1.5 block text-sm text-zinc-400">
+              <label htmlFor="name" className="mb-1.5 block text-sm text-[var(--fg-4)]">
                 Nome
               </label>
               <input
@@ -115,12 +115,12 @@ export function ContactForm() {
                 required
                 value={form.name}
                 onChange={(e) => updateField("name", e.target.value)}
-                className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-indigo-500/50 focus:outline-none"
+                className="w-full rounded-lg border border-[var(--line-strong)] bg-[var(--panel-3)] px-4 py-2.5 text-sm text-[var(--fg-1)] placeholder:text-[var(--fg-5)] transition-colors focus:border-[var(--line-hover)] focus:outline-none"
                 placeholder="Seu nome"
               />
             </div>
             <div>
-              <label htmlFor="company" className="mb-1.5 block text-sm text-zinc-400">
+              <label htmlFor="company" className="mb-1.5 block text-sm text-[var(--fg-4)]">
                 Empresa
               </label>
               <input
@@ -128,12 +128,12 @@ export function ContactForm() {
                 type="text"
                 value={form.company}
                 onChange={(e) => updateField("company", e.target.value)}
-                className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-indigo-500/50 focus:outline-none"
+                className="w-full rounded-lg border border-[var(--line-strong)] bg-[var(--panel-3)] px-4 py-2.5 text-sm text-[var(--fg-1)] placeholder:text-[var(--fg-5)] transition-colors focus:border-[var(--line-hover)] focus:outline-none"
                 placeholder="Nome da empresa"
               />
             </div>
             <div>
-              <label htmlFor="email" className="mb-1.5 block text-sm text-zinc-400">
+              <label htmlFor="email" className="mb-1.5 block text-sm text-[var(--fg-4)]">
                 E-mail
               </label>
               <input
@@ -142,12 +142,12 @@ export function ContactForm() {
                 required
                 value={form.email}
                 onChange={(e) => updateField("email", e.target.value)}
-                className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-indigo-500/50 focus:outline-none"
+                className="w-full rounded-lg border border-[var(--line-strong)] bg-[var(--panel-3)] px-4 py-2.5 text-sm text-[var(--fg-1)] placeholder:text-[var(--fg-5)] transition-colors focus:border-[var(--line-hover)] focus:outline-none"
                 placeholder="seu@email.com"
               />
             </div>
             <div>
-              <label htmlFor="whatsapp" className="mb-1.5 block text-sm text-zinc-400">
+              <label htmlFor="whatsapp" className="mb-1.5 block text-sm text-[var(--fg-4)]">
                 WhatsApp
               </label>
               <input
@@ -155,14 +155,14 @@ export function ContactForm() {
                 type="tel"
                 value={form.whatsapp}
                 onChange={(e) => updateField("whatsapp", e.target.value)}
-                className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-indigo-500/50 focus:outline-none"
+                className="w-full rounded-lg border border-[var(--line-strong)] bg-[var(--panel-3)] px-4 py-2.5 text-sm text-[var(--fg-1)] placeholder:text-[var(--fg-5)] transition-colors focus:border-[var(--line-hover)] focus:outline-none"
                 placeholder="(00) 00000-0000"
               />
             </div>
           </div>
 
           <div className="mt-5">
-            <label htmlFor="projectType" className="mb-1.5 block text-sm text-zinc-400">
+            <label htmlFor="projectType" className="mb-1.5 block text-sm text-[var(--fg-4)]">
               Tipo de projeto
             </label>
             <select
@@ -170,13 +170,13 @@ export function ContactForm() {
               required
               value={form.projectType}
               onChange={(e) => updateField("projectType", e.target.value)}
-              className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-zinc-100 transition-colors focus:border-indigo-500/50 focus:outline-none"
+              className="w-full rounded-lg border border-[var(--line-strong)] bg-[var(--panel-3)] px-4 py-2.5 text-sm text-[var(--fg-1)] transition-colors focus:border-[var(--line-hover)] focus:outline-none"
             >
-              <option value="" disabled className="bg-zinc-900">
+              <option value="" disabled className="bg-[var(--panel-opaque)]">
                 Selecione o tipo de projeto
               </option>
               {PROJECT_TYPES.map((type) => (
-                <option key={type} value={type} className="bg-zinc-900">
+                <option key={type} value={type} className="bg-[var(--panel-opaque)]">
                   {type}
                 </option>
               ))}
@@ -195,7 +195,7 @@ export function ContactForm() {
           />
 
           <div className="mt-5">
-            <label htmlFor="message" className="mb-1.5 block text-sm text-zinc-400">
+            <label htmlFor="message" className="mb-1.5 block text-sm text-[var(--fg-4)]">
               Conte um pouco sobre o projeto
             </label>
             <textarea
@@ -204,7 +204,7 @@ export function ContactForm() {
               rows={4}
               value={form.message}
               onChange={(e) => updateField("message", e.target.value)}
-              className="w-full resize-none rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 transition-colors focus:border-indigo-500/50 focus:outline-none"
+              className="w-full resize-none rounded-lg border border-[var(--line-strong)] bg-[var(--panel-3)] px-4 py-2.5 text-sm text-[var(--fg-1)] placeholder:text-[var(--fg-5)] transition-colors focus:border-[var(--line-hover)] focus:outline-none"
               placeholder="Descreva o que você precisa, o problema que quer resolver ou a ideia que tem em mente..."
             />
           </div>
@@ -219,7 +219,7 @@ export function ContactForm() {
             type="submit"
             disabled={loading}
             className={cn(
-              "mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-white text-sm font-medium text-zinc-950 transition-all hover:bg-zinc-100 active:scale-[0.98] disabled:opacity-60"
+              "mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[var(--btn-bg)] text-sm font-medium text-[var(--btn-fg)] transition-all hover:bg-[var(--btn-bg-hover)] active:scale-[0.98] disabled:opacity-60"
             )}
           >
             {loading ? (
