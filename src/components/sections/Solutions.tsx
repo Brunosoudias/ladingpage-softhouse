@@ -32,7 +32,7 @@ export function Solutions() {
   const { fadeUp, stagger } = useMotionSafe();
 
   return (
-    <section id="solucoes" className="py-20 sm:py-28">
+    <section id="solucoes" className="py-16 sm:py-24">
       <div className="section-padding mx-auto max-w-7xl">
         <SectionHeading
           title="Da ideia ao software em produção."
@@ -53,13 +53,13 @@ export function Solutions() {
                   "hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)]"
                 )}
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-400 transition-colors group-hover:bg-indigo-500/20">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--panel-hover)] text-[var(--fg-2)] transition-colors">
                   <Icon size={20} />
                 </div>
-                <h3 className="mb-2 text-base font-medium text-zinc-100">
+                <h3 className="mb-2 text-base font-medium text-[var(--fg-1)]">
                   {solution.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-zinc-500">
+                <p className="text-sm leading-relaxed text-[var(--fg-4)]">
                   {solution.description}
                 </p>
               </motion.article>

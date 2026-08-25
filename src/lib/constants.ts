@@ -1,8 +1,8 @@
 export const SITE = {
-  name: "SoftHouse",
+  name: "BR Tecnologia",
   tagline: "Software sob medida para negócios que querem evoluir.",
-  url: "https://softhouse.dev",
-  email: "contato@softhouse.dev",
+  url: "https://brtecnologia.com.br",
+  email: "brunosousadias.dev@gmail.com",
 } as const;
 
 export const NAV_LINKS = [

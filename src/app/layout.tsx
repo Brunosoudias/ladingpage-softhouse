@@ -16,10 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: "Software House | Sistemas, SaaS e Software Sob Medida",
+  title: "BR Tecnologia | Sistemas, SaaS e Software Sob Medida",
   description:
     "Desenvolvemos sistemas, SaaS, plataformas, integrações e soluções digitais sob medida para transformar ideias e problemas de negócio em software.",
   keywords: [
+    "BR Tecnologia",
     "software house",
     "desenvolvimento de sistemas",
     "desenvolvimento de software",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: SITE.name }],
   openGraph: {
-    title: "Software House | Sistemas, SaaS e Software Sob Medida",
+    title: "BR Tecnologia | Sistemas, SaaS e Software Sob Medida",
     description:
       "Desenvolvemos sistemas, SaaS, plataformas, integrações e soluções digitais sob medida para transformar ideias e problemas de negócio em software.",
     url: siteConfig.url,
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Software House | Sistemas, SaaS e Software Sob Medida",
+    title: "BR Tecnologia | Sistemas, SaaS e Software Sob Medida",
     description:
       "Desenvolvemos sistemas, SaaS, plataformas, integrações e soluções digitais sob medida para transformar ideias e problemas de negócio em software.",
   },
@@ -61,7 +62,15 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="relative min-h-full bg-[#08080a] text-zinc-100">
+      <head>
+        <script
+          // Aplica o tema salvo antes da primeira pintura, evitando flash do tema errado.
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("br-tecnologia-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}`,
+          }}
+        />
+      </head>
+      <body className="relative min-h-full bg-[var(--background)] text-[var(--fg-1)]">
         <div className="noise-overlay" aria-hidden="true" />
         {children}
       </body>

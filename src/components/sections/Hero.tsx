@@ -13,7 +13,7 @@ export function Hero() {
     <section className="relative overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-28">
       {/* Background elements */}
       <div className="pointer-events-none absolute inset-0 grid-bg opacity-40" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-indigo-500/[0.07] blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-[var(--accent-glow)] blur-[120px]" />
 
       <div className="section-padding relative mx-auto max-w-7xl">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -21,15 +21,15 @@ export function Hero() {
             <motion.p
               {...fadeUp}
               transition={{ ...fadeUp.transition, duration }}
-              className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-indigo-400"
+              className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-[var(--accent-text)]"
             >
-              Software House
+              BR Tecnologia
             </motion.p>
 
             <motion.h1
               {...fadeUp}
               transition={{ ...fadeUp.transition, duration, delay: 0.1 }}
-              className="text-4xl font-semibold leading-[1.1] tracking-tight text-zinc-50 sm:text-5xl lg:text-[3.5rem]"
+              className="text-4xl font-semibold leading-[1.1] tracking-tight text-[var(--foreground)] sm:text-5xl lg:text-[3.5rem]"
             >
               Seu próximo produto digital{" "}
               <span className="gradient-accent">começa aqui.</span>
@@ -38,7 +38,7 @@ export function Hero() {
             <motion.p
               {...fadeUp}
               transition={{ ...fadeUp.transition, duration, delay: 0.2 }}
-              className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg lg:mx-0"
+              className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[var(--fg-4)] sm:text-lg lg:mx-0"
             >
               Desenvolvemos sistemas, SaaS, plataformas e integrações sob medida
               para transformar ideias e problemas de negócio em software que

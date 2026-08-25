@@ -13,11 +13,11 @@ export function HeroVisual({ className }: HeroVisualProps) {
     <div className={className} aria-hidden="true">
       <div className="relative mx-auto aspect-square max-w-lg lg:max-w-none">
         {/* Glow background */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-violet-500/5 to-transparent blur-3xl" />
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[var(--accent-glow)] via-[var(--accent-glow)] to-transparent blur-3xl" />
 
         {/* Main dashboard card */}
         <motion.div
-          className="glass absolute left-1/2 top-1/2 w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-xl p-4 shadow-2xl"
+          className="glass-dark absolute left-1/2 top-1/2 w-[85%] -translate-x-1/2 -translate-y-1/2 rounded-xl p-4 shadow-2xl"
           animate={prefersReducedMotion ? {} : { y: [0, -8, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -25,33 +25,33 @@ export function HeroVisual({ className }: HeroVisualProps) {
             <div className="h-2.5 w-2.5 rounded-full bg-red-400/60" />
             <div className="h-2.5 w-2.5 rounded-full bg-amber-400/60" />
             <div className="h-2.5 w-2.5 rounded-full bg-emerald-400/60" />
-            <span className="ml-2 font-mono text-[10px] text-zinc-500">dashboard.tsx</span>
+            <span className="ml-2 font-mono text-[10px] text-zinc-400">dashboard.tsx</span>
           </div>
           <div className="space-y-2 font-mono text-[11px] leading-relaxed text-zinc-400">
             <p>
-              <span className="text-violet-400">export</span>{" "}
-              <span className="text-indigo-300">function</span>{" "}
+              <span className="text-zinc-300">export</span>{" "}
+              <span className="text-zinc-400">function</span>{" "}
               <span className="text-zinc-200">Dashboard</span>
-              <span className="text-zinc-500">()</span> {"{"}
+              <span className="text-zinc-400">()</span> {"{"}
             </p>
             <p className="pl-4">
-              <span className="text-violet-400">return</span>{" "}
-              <span className="text-zinc-500">&lt;</span>
+              <span className="text-zinc-300">return</span>{" "}
+              <span className="text-zinc-400">&lt;</span>
               <span className="text-emerald-400">Analytics</span>
-              <span className="text-zinc-500"> /&gt;</span>
+              <span className="text-zinc-400"> /&gt;</span>
             </p>
             <p>{"}"}</p>
           </div>
           <div className="mt-4 grid grid-cols-3 gap-2">
             {[68, 42, 91].map((val, i) => (
-              <div key={i} className="rounded-md bg-white/[0.04] p-2">
+              <div key={i} className="rounded-md bg-white/[0.06] p-2">
                 <div className="mb-1 h-1 rounded-full bg-white/10">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+                    className="h-full rounded-full bg-gradient-to-r from-zinc-400 to-zinc-300"
                     style={{ width: `${val}%` }}
                   />
                 </div>
-                <p className="font-mono text-[9px] text-zinc-500">{val}%</p>
+                <p className="font-mono text-[9px] text-zinc-400">{val}%</p>
               </div>
             ))}
           </div>
@@ -59,7 +59,7 @@ export function HeroVisual({ className }: HeroVisualProps) {
 
         {/* API node - top right */}
         <motion.div
-          className="glass absolute -right-2 top-8 rounded-lg px-3 py-2 sm:right-0"
+          className="glass-dark absolute -right-2 top-8 rounded-lg px-3 py-2 sm:right-0"
           animate={prefersReducedMotion ? {} : { y: [0, 6, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
@@ -76,7 +76,7 @@ export function HeroVisual({ className }: HeroVisualProps) {
 
         {/* Database node - bottom left */}
         <motion.div
-          className="glass absolute -left-2 bottom-12 rounded-lg px-3 py-2 sm:left-0"
+          className="glass-dark absolute -left-2 bottom-12 rounded-lg px-3 py-2 sm:left-0"
           animate={prefersReducedMotion ? {} : { y: [0, -5, 0] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         >
@@ -97,12 +97,12 @@ export function HeroVisual({ className }: HeroVisualProps) {
 
         {/* Integration node - bottom right */}
         <motion.div
-          className="glass absolute bottom-4 right-4 rounded-lg px-3 py-2"
+          className="glass-dark absolute bottom-4 right-4 rounded-lg px-3 py-2"
           animate={prefersReducedMotion ? {} : { y: [0, 4, 0] }}
           transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
         >
           <p className="text-[10px] font-medium text-zinc-300">Integração</p>
-          <p className="font-mono text-[9px] text-violet-400">3 sistemas sync</p>
+          <p className="font-mono text-[9px] text-zinc-300">3 sistemas sync</p>
         </motion.div>
 
         {/* Connection lines SVG */}
@@ -140,8 +140,8 @@ export function HeroVisual({ className }: HeroVisualProps) {
           />
           <defs>
             <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#6366f1" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.2" />
+              <stop offset="0%" stopColor="#a1a1aa" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#71717a" stopOpacity="0.2" />
             </linearGradient>
           </defs>
         </svg>

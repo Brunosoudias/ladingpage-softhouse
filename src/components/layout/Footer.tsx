@@ -45,23 +45,20 @@ export function Footer() {
   const whatsappUrl = getWhatsAppUrl("Olá! Vim pelo site e gostaria de conversar sobre um projeto.");
 
   return (
-    <footer className="border-t border-white/[0.06] bg-[#060608]">
+    <footer className="border-t border-[var(--line)] bg-[var(--background-alt)]">
       <div className="section-padding mx-auto max-w-7xl py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600">
-                <span className="font-mono text-xs font-bold text-white">SH</span>
-              </div>
-              <span className="text-sm font-semibold text-zinc-100">{siteConfig.name}</span>
+              <span className="text-sm font-semibold text-[var(--fg-1)]">{siteConfig.name}</span>
             </div>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-500">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-[var(--fg-4)]">
               {siteConfig.tagline}
             </p>
             <div className="mt-5 flex flex-col gap-2 text-sm">
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="w-fit text-zinc-400 transition-colors hover:text-zinc-100"
+                className="w-fit text-[var(--fg-4)] transition-colors hover:text-[var(--fg-1)]"
               >
                 {siteConfig.email}
               </a>
@@ -70,7 +67,7 @@ export function Footer() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-fit text-zinc-400 transition-colors hover:text-zinc-100"
+                  className="w-fit text-[var(--fg-4)] transition-colors hover:text-[var(--fg-1)]"
                 >
                   WhatsApp
                 </a>
@@ -79,7 +76,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="mb-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+            <p className="mb-4 text-xs font-medium uppercase tracking-wider text-[var(--fg-4)]">
               Navegação
             </p>
             <ul className="space-y-3">
@@ -87,7 +84,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-zinc-400 transition-colors hover:text-zinc-100"
+                    className="text-sm text-[var(--fg-4)] transition-colors hover:text-[var(--fg-1)]"
                   >
                     {link.label}
                   </a>
@@ -98,7 +95,7 @@ export function Footer() {
 
           {socialLinks.length > 0 && (
             <div>
-              <p className="mb-4 text-xs font-medium uppercase tracking-wider text-zinc-500">
+              <p className="mb-4 text-xs font-medium uppercase tracking-wider text-[var(--fg-4)]">
                 Redes
               </p>
               <div className="flex gap-3">
@@ -111,7 +108,7 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={key}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] text-zinc-400 transition-all hover:border-white/20 hover:text-zinc-100"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--line-strong)] text-[var(--fg-4)] transition-all hover:border-[var(--line-hover)] hover:text-[var(--fg-1)]"
                     >
                       <Icon />
                     </a>
@@ -122,11 +119,11 @@ export function Footer() {
           )}
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-white/[0.06] pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-zinc-600">
+        <div className="mt-12 flex flex-col gap-2 border-t border-[var(--line)] pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-[var(--fg-5)]">
             © {new Date().getFullYear()} {siteConfig.name}. Todos os direitos reservados.
           </p>
-          <p className="text-xs text-zinc-600">
+          <p className="text-xs text-[var(--fg-5)]">
             Desenvolvimento de software sob medida
           </p>
         </div>

@@ -1,15 +1,15 @@
 const trim = (value: string | undefined) => value?.trim() || undefined;
 
 export const siteConfig = {
-  name: trim(process.env.NEXT_PUBLIC_SITE_NAME) ?? "SoftHouse",
+  name: trim(process.env.NEXT_PUBLIC_SITE_NAME) ?? "BR Tecnologia",
   tagline:
     trim(process.env.NEXT_PUBLIC_SITE_TAGLINE) ??
     "Software sob medida para negócios que querem evoluir.",
-  url: trim(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://softhouse.dev",
+  url: trim(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://brtecnologia.com.br",
   email:
     trim(process.env.CONTACT_EMAIL) ??
     trim(process.env.NEXT_PUBLIC_CONTACT_EMAIL) ??
-    "contato@softhouse.dev",
+    "brunosousadias.dev@gmail.com",
   whatsapp: trim(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER),
   social: {
     instagram: trim(process.env.NEXT_PUBLIC_INSTAGRAM_URL),
