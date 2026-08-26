@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, Send } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PROJECT_TYPES } from "@/lib/constants";
+import { getWhatsAppUrl } from "@/lib/site-config";
 import { useMotionSafe } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -28,37 +29,66 @@ const initialForm: FormData = {
   website: "",
 };
 
+// Aplica a máscara (DD) DDDDD-DDDD progressivamente, limitando a 11 dígitos
+// (DDD + celular com o 9º dígito).
+function formatPhone(value: string): string {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+
+  if (digits.length <= 2) return digits;
+  if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 10) {
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  }
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
+function buildWhatsAppMessage(form: FormData): string {
+  const lines = [
+    `Olá! Vim pelo site e quero conversar sobre um projeto.`,
+    "",
+    `Nome: ${form.name}`,
+    form.company ? `Empresa: ${form.company}` : null,
+    `E-mail: ${form.email}`,
+    form.whatsapp ? `WhatsApp: ${form.whatsapp}` : null,
+    `Tipo de projeto: ${form.projectType}`,
+    "",
+    "Mensagem:",
+    form.message,
+  ];
+
+  return lines.filter(Boolean).join("\n");
+}
+
 export function ContactForm() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { fadeUp } = useMotionSafe();
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setError(null);
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = (await response.json()) as { error?: string };
-
-      if (!response.ok) {
-        throw new Error(data.error ?? "Não foi possível enviar. Tente novamente.");
-      }
-
+    // Honeypot — bots preenchem; humanos não veem o campo.
+    if (form.website) {
       setSubmitted(true);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Erro inesperado. Tente novamente.");
-    } finally {
-      setLoading(false);
+      return;
     }
+
+    const phoneDigits = form.whatsapp.replace(/\D/g, "");
+    if (phoneDigits && (phoneDigits.length < 10 || phoneDigits.length > 11)) {
+      setError("WhatsApp inválido — informe DDD + número.");
+      return;
+    }
+
+    const url = getWhatsAppUrl(buildWhatsAppMessage(form));
+    if (!url) {
+      setError("WhatsApp não configurado. Tente pelo e-mail no rodapé.");
+      return;
+    }
+
+    // Redireciona o cliente para o WhatsApp com todos os dados do formulário.
+    window.location.href = url;
   };
 
   const updateField = (field: keyof FormData, value: string) => {
@@ -76,11 +106,11 @@ export function ContactForm() {
           >
             <CheckCircle2 size={48} className="mx-auto text-emerald-400" />
             <h2 className="mt-4 text-xl font-semibold text-[var(--fg-1)]">
-              Mensagem enviada com sucesso!
+              Quase lá!
             </h2>
             <p className="mt-2 text-sm text-[var(--fg-4)]">
-              Recebemos seu projeto. Entraremos em contato em breve para
-              entender melhor suas necessidades.
+              Abrimos o WhatsApp com sua mensagem. É só enviar para
+              conversarmos sobre o projeto.
             </p>
           </motion.div>
         </div>
@@ -153,8 +183,10 @@ export function ContactForm() {
               <input
                 id="whatsapp"
                 type="tel"
+                inputMode="numeric"
+                maxLength={15}
                 value={form.whatsapp}
-                onChange={(e) => updateField("whatsapp", e.target.value)}
+                onChange={(e) => updateField("whatsapp", formatPhone(e.target.value))}
                 className="w-full rounded-lg border border-[var(--line-strong)] bg-[var(--panel-3)] px-4 py-2.5 text-sm text-[var(--fg-1)] placeholder:text-[var(--fg-5)] transition-colors focus:border-[var(--line-hover)] focus:outline-none"
                 placeholder="(00) 00000-0000"
               />
@@ -217,19 +249,12 @@ export function ContactForm() {
 
           <button
             type="submit"
-            disabled={loading}
             className={cn(
-              "mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[var(--btn-bg)] text-sm font-medium text-[var(--btn-fg)] transition-all hover:bg-[var(--btn-bg-hover)] active:scale-[0.98] disabled:opacity-60"
+              "mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[var(--btn-bg)] text-sm font-medium text-[var(--btn-fg)] transition-all hover:bg-[var(--btn-bg-hover)] active:scale-[0.98]"
             )}
           >
-            {loading ? (
-              "Enviando..."
-            ) : (
-              <>
-                Quero tirar meu projeto do papel
-                <Send size={16} />
-              </>
-            )}
+            Quero tirar meu projeto do papel
+            <Send size={16} />
           </button>
         </motion.form>
       </div>

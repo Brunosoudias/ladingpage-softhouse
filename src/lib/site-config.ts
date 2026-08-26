@@ -7,9 +7,8 @@ export const siteConfig = {
     "Software sob medida para negócios que querem evoluir.",
   url: trim(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://brtecnologia.com.br",
   email:
-    trim(process.env.CONTACT_EMAIL) ??
     trim(process.env.NEXT_PUBLIC_CONTACT_EMAIL) ??
-    "brunosousadias.dev@gmail.com",
+    "contato@brtecnologia.com.br",
   whatsapp: trim(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER),
   social: {
     instagram: trim(process.env.NEXT_PUBLIC_INSTAGRAM_URL),
