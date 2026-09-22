@@ -65,7 +65,6 @@ export default function RootLayout({
     >
       <head>
         <script
-          // Aplica o tema salvo antes da primeira pintura, evitando flash do tema errado.
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem("br-tecnologia-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}`,
           }}

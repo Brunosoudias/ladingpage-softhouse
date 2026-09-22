@@ -29,8 +29,6 @@ const initialForm: FormData = {
   website: "",
 };
 
-// Aplica a máscara (DD) DDDDD-DDDD progressivamente, limitando a 11 dígitos
-// (DDD + celular com o 9º dígito).
 function formatPhone(value: string): string {
   const digits = value.replace(/\D/g, "").slice(0, 11);
 
@@ -69,7 +67,6 @@ export function ContactForm() {
     e.preventDefault();
     setError(null);
 
-    // Honeypot — bots preenchem; humanos não veem o campo.
     if (form.website) {
       setSubmitted(true);
       return;
@@ -87,7 +84,6 @@ export function ContactForm() {
       return;
     }
 
-    // Redireciona o cliente para o WhatsApp com todos os dados do formulário.
     window.location.href = url;
   };
 

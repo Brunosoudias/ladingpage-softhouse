@@ -75,7 +75,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <div
         className={cn(
           "fixed inset-0 top-16 z-30 bg-[var(--header-bg-solid)] backdrop-blur-xl transition-all duration-300 md:hidden",

@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark theme (default) */
   --background: #0b0b0f;
   --background-alt: #060608;
   --foreground: #fafafa;
@@ -37,10 +36,6 @@
   --accent-light: #f4f4f5;
   --accent-text: #d4d4d8;
   --accent-glow: rgba(255, 255, 255, 0.08);
-  --gradient-start: #e4e4e7;
-  --gradient-end: #a1a1aa;
-  --gradient-text-1: #e4e4e7;
-  --gradient-text-2: #a1a1aa;
   --selection: rgba(161, 161, 170, 0.35);
 
   --grid-line: rgba(255, 255, 255, 0.03);
@@ -84,10 +79,6 @@
   --accent-light: #18181b;
   --accent-text: #3f3f46;
   --accent-glow: rgba(9, 9, 11, 0.05);
-  --gradient-start: #27272a;
-  --gradient-end: #52525b;
-  --gradient-text-1: #27272a;
-  --gradient-text-2: #52525b;
   --selection: rgba(113, 113, 122, 0.3);
 
   --grid-line: rgba(9, 9, 11, 0.035);
@@ -144,25 +135,6 @@ body {
   outline-offset: 2px;
 }
 
-.gradient-text {
-  background: linear-gradient(
-    135deg,
-    var(--gradient-text-1) 0%,
-    var(--gradient-text-2) 50%,
-    var(--gradient-text-1) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-accent {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .glass {
   background: var(--panel-3);
   border: 1px solid var(--line-strong);
@@ -174,8 +146,6 @@ body {
   border-color: var(--line-hover);
 }
 
-/* Painel "IDE/dashboard" da ilustração do Hero — fica sempre escuro, como um
-   mockup de editor de código, independente do tema da página. */
 .glass-dark {
   background: rgba(24, 24, 27, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
