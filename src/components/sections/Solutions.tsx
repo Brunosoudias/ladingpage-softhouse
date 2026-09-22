@@ -49,8 +49,8 @@ export function Solutions() {
                 {...fadeUp}
                 transition={{ ...fadeUp.transition, delay: i * stagger }}
                 className={cn(
-                  "group glass glass-hover rounded-xl p-6 transition-all duration-300",
-                  "hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)]"
+                  "group rounded-xl border border-[var(--line)] bg-[var(--panel-2)] p-6 transition-all duration-300",
+                  "hover:-translate-y-0.5 hover:border-[var(--line-hover)] hover:bg-[var(--panel-hover)]"
                 )}
               >
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--panel-hover)] text-[var(--fg-2)] transition-colors">

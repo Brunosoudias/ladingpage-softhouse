@@ -42,7 +42,7 @@ export function Problems() {
         >
           <p className="text-xl font-medium text-[var(--fg-2)] sm:text-2xl">
             Nós podemos transformar isso em uma{" "}
-            <span className="gradient-accent">solução digital.</span>
+            <span className="text-[var(--fg-1)]">solução digital.</span>
           </p>
           <div className="mt-6">
             <Button href="#contato" variant="secondary">

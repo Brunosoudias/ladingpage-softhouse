@@ -17,10 +17,9 @@ export function Process() {
           className="mb-16"
         />
 
-        {/* Desktop horizontal timeline */}
         <div className="hidden lg:block">
           <div className="relative">
-            <div className="absolute left-0 right-0 top-[2.75rem] h-px bg-gradient-to-r from-transparent via-[var(--line-soft)] to-transparent" />
+            <div className="absolute left-0 right-0 top-[2.75rem] h-px bg-[var(--line-soft)]" />
             <div className="grid grid-cols-6 gap-4">
               {PROCESS_STEPS.map((step, i) => (
                 <motion.div
@@ -44,7 +43,6 @@ export function Process() {
           </div>
         </div>
 
-        {/* Mobile/tablet vertical timeline */}
         <div className="lg:hidden">
           <div className="relative ml-5 border-l border-[var(--line-strong)] pl-8">
             {PROCESS_STEPS.map((step, i) => (
