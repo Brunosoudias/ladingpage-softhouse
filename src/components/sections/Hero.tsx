@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { HeroVisual } from "@/components/ui/HeroVisual";
+import { SITE } from "@/lib/constants";
 import { useMotionSafe } from "@/lib/motion";
 
 export function Hero() {
@@ -23,7 +24,7 @@ export function Hero() {
               transition={{ ...fadeUp.transition, duration }}
               className="mb-5 text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--fg-5)]"
             >
-              BR Tecnologia
+              {SITE.name}
             </motion.p>
 
             <motion.h1

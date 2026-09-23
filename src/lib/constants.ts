@@ -1,7 +1,7 @@
 export const SITE = {
-  name: "BR Tecnologia",
+  name: "BR Coder",
   tagline: "Software sob medida para negócios que querem evoluir.",
-  url: "https://brtecnologia.com.br",
+  url: "https://brcoder.com.br",
   email: "brunosousadias.dev@gmail.com",
 } as const;
 

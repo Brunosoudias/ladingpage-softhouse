@@ -14,13 +14,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const pageTitle = `${siteConfig.name} | Sistemas, SaaS e Software Sob Medida`;
+const pageDescription =
+  "Desenvolvemos sistemas, SaaS, plataformas, integrações e soluções digitais sob medida para transformar ideias e problemas de negócio em software.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: "BR Tecnologia | Sistemas, SaaS e Software Sob Medida",
-  description:
-    "Desenvolvemos sistemas, SaaS, plataformas, integrações e soluções digitais sob medida para transformar ideias e problemas de negócio em software.",
+  title: pageTitle,
+  description: pageDescription,
   keywords: [
-    "BR Tecnologia",
+    siteConfig.name,
     "software house",
     "desenvolvimento de sistemas",
     "desenvolvimento de software",
@@ -32,9 +35,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: SITE.name }],
   openGraph: {
-    title: "BR Tecnologia | Sistemas, SaaS e Software Sob Medida",
-    description:
-      "Desenvolvemos sistemas, SaaS, plataformas, integrações e soluções digitais sob medida para transformar ideias e problemas de negócio em software.",
+    title: pageTitle,
+    description: pageDescription,
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: "pt_BR",
@@ -42,9 +44,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BR Tecnologia | Sistemas, SaaS e Software Sob Medida",
-    description:
-      "Desenvolvemos sistemas, SaaS, plataformas, integrações e soluções digitais sob medida para transformar ideias e problemas de negócio em software.",
+    title: pageTitle,
+    description: pageDescription,
   },
   robots: {
     index: true,
@@ -66,7 +67,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("br-tecnologia-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}`,
+            __html: `try{var t=localStorage.getItem("br-coder-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}`,
           }}
         />
       </head>
