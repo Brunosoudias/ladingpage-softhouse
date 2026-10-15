@@ -6,10 +6,12 @@ export const siteConfig = {
     trim(process.env.NEXT_PUBLIC_SITE_TAGLINE) ??
     "Desenvolvimento de software e infraestrutura gerenciada para empresas que querem crescer.",
   url: trim(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://brcoder.com.br",
-  email: trim(process.env.NEXT_PUBLIC_CONTACT_EMAIL) ?? "contato@brcoder.com.br",
+  email: trim(process.env.NEXT_PUBLIC_CONTACT_EMAIL) ?? "brcodertecnologia@gmail.com",
   whatsapp: trim(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER),
   social: {
-    instagram: trim(process.env.NEXT_PUBLIC_INSTAGRAM_URL),
+    instagram:
+      trim(process.env.NEXT_PUBLIC_INSTAGRAM_URL) ??
+      "https://instagram.com/brcoderoficial",
     linkedin: trim(process.env.NEXT_PUBLIC_LINKEDIN_URL),
     github: trim(process.env.NEXT_PUBLIC_GITHUB_URL),
   },
