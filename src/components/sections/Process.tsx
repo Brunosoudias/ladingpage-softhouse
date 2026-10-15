@@ -42,7 +42,6 @@ export function Process({
       <div className="section-padding mx-auto max-w-7xl">
         <SectionHeading title={title} subtitle={subtitle} className="mb-16" />
 
-        {/* Desktop horizontal timeline */}
         <div className="hidden lg:block">
           <div className="relative">
             <div className="absolute left-0 right-0 top-[2.75rem] h-px bg-gradient-to-r from-transparent via-[var(--line-soft)] to-transparent" />
@@ -69,7 +68,6 @@ export function Process({
           </div>
         </div>
 
-        {/* Mobile/tablet vertical timeline */}
         <div className="lg:hidden">
           <div className="relative ml-5 border-l border-[var(--line-strong)] pl-8">
             {steps.map((step, i) => (

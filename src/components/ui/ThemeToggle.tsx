@@ -21,9 +21,6 @@ function getSnapshot(): Theme {
   return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
 }
 
-// No servidor (e antes da hidratação) assumimos o tema escuro padrão — o
-// script inline no <head> já corrige o atributo antes da primeira pintura
-// caso o usuário tenha escolhido o tema claro anteriormente.
 function getServerSnapshot(): Theme {
   return "dark";
 }
@@ -33,7 +30,6 @@ function setTheme(theme: Theme) {
   try {
     localStorage.setItem(STORAGE_KEY, theme);
   } catch {
-    // localStorage indisponível (modo privado, etc.) — segue sem persistir.
   }
 }
 

@@ -7,47 +7,27 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getPublishedProjects } from "@/data/projects";
 import type { PortfolioProject } from "@/types/portfolio";
 import { useMotionSafe } from "@/lib/motion";
-import { cn } from "@/lib/utils";
 
-function ProjectMockup({
-  gradient,
-  accent,
-  category,
-}: {
-  gradient: string;
-  accent: string;
-  category: string;
-}) {
+function ProjectMockup({ category }: { category: string }) {
   return (
-    <div
-      className={cn(
-        "relative aspect-[16/10] overflow-hidden rounded-lg bg-gradient-to-br",
-        gradient
-      )}
-    >
+    <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-[var(--panel-opaque)]">
       <div className="absolute inset-3 rounded-md border border-[var(--line-strong)] bg-[#0c0c0e]/80 backdrop-blur-sm">
         <div className="flex items-center gap-1.5 border-b border-[var(--line)] px-3 py-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-red-400/50" />
-          <div className="h-1.5 w-1.5 rounded-full bg-amber-400/50" />
-          <div className="h-1.5 w-1.5 rounded-full bg-emerald-400/50" />
+          <div className="h-1.5 w-1.5 rounded-full bg-zinc-500" />
+          <div className="h-1.5 w-1.5 rounded-full bg-zinc-500" />
+          <div className="h-1.5 w-1.5 rounded-full bg-zinc-500" />
         </div>
         <div className="p-3">
           <div className="mb-2 flex items-center justify-between">
             <div className="h-2 w-16 rounded bg-white/10" />
-            <div
-              className="rounded px-2 py-0.5 font-mono text-[8px]"
-              style={{ backgroundColor: `${accent}20`, color: accent }}
-            >
+            <div className="rounded bg-white/10 px-2 py-0.5 font-mono text-[8px] text-zinc-400">
               {category}
             </div>
           </div>
           <div className="grid grid-cols-3 gap-2">
             {[1, 2, 3].map((n) => (
               <div key={n} className="rounded bg-[var(--panel-hover)] p-2">
-                <div
-                  className="mb-1 h-8 rounded"
-                  style={{ backgroundColor: `${accent}10` }}
-                />
+                <div className="mb-1 h-8 rounded bg-white/5" />
                 <div className="h-1 w-2/3 rounded bg-white/10" />
               </div>
             ))}
@@ -74,13 +54,7 @@ function ProjectVisual({ project }: { project: PortfolioProject }) {
     );
   }
 
-  return (
-    <ProjectMockup
-      gradient={project.gradient}
-      accent={project.accent}
-      category={project.category}
-    />
-  );
+  return <ProjectMockup category={project.category} />;
 }
 
 function ProjectCard({
