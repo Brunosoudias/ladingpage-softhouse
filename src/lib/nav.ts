@@ -5,6 +5,6 @@ export function getNavLinks() {
   const hasProjects = getPublishedProjects().length > 0;
 
   return NAV_LINKS.filter(
-    (link) => link.href !== "#projetos" || hasProjects
+    (link) => link.href !== "/#projetos" || hasProjects
   );
 }

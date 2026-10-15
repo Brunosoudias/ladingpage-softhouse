@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type ButtonProps = React.ComponentProps<"a"> & {
+type ButtonProps = React.ComponentProps<typeof Link> & {
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
 };
@@ -14,9 +15,9 @@ const variants = {
 };
 
 const sizes = {
-  sm: "h-9 px-4 text-sm",
-  md: "h-11 px-5 text-sm",
-  lg: "h-12 px-6 text-sm",
+  sm: "min-h-9 px-4 py-2 text-sm",
+  md: "min-h-11 px-5 py-2.5 text-sm",
+  lg: "min-h-12 px-6 py-3 text-sm",
 };
 
 export function Button({
@@ -27,9 +28,9 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <a
+    <Link
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 active:scale-[0.98]",
+        "inline-flex items-center justify-center gap-2 whitespace-normal rounded-lg text-center font-medium transition-all duration-200 active:scale-[0.98]",
         variants[variant],
         sizes[size],
         className
@@ -37,6 +38,6 @@ export function Button({
       {...props}
     >
       {children}
-    </a>
+    </Link>
   );
 }

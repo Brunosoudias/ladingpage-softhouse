@@ -4,7 +4,7 @@ import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const STORAGE_KEY = "br-tecnologia-theme";
+const STORAGE_KEY = "br-coder-theme";
 
 type Theme = "dark" | "light";
 

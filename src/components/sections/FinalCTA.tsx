@@ -5,7 +5,23 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useMotionSafe } from "@/lib/motion";
 
-export function FinalCTA() {
+type FinalCTAProps = {
+  title?: string;
+  subtitle?: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+};
+
+export function FinalCTA({
+  title = "Precisa de um sistema novo ou de alguém para cuidar do que já está no ar?",
+  subtitle = "Conte o contexto. O retorno traz os próximos passos para desenvolvimento ou para infraestrutura gerenciada.",
+  primaryHref = "/#contato",
+  primaryLabel = "Solicitar um orçamento",
+  secondaryHref = "/infraestrutura",
+  secondaryLabel = "Conhecer a infraestrutura",
+}: FinalCTAProps) {
   const { fadeUp } = useMotionSafe();
 
   return (
@@ -16,20 +32,19 @@ export function FinalCTA() {
       <div className="section-padding relative mx-auto max-w-3xl text-center">
         <motion.div {...fadeUp}>
           <h2 className="text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl">
-            Tem uma ideia? Um problema? Um processo para automatizar?
+            {title}
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[var(--fg-4)] sm:text-lg">
-            Conte o que você precisa. Nós ajudamos a transformar isso em uma
-            solução digital.
+            {subtitle}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button href="#contato" size="lg">
-              Falar sobre meu projeto
+            <Button href={primaryHref} size="lg">
+              {primaryLabel}
               <ArrowRight size={16} />
             </Button>
-            <Button href="#contato" variant="secondary" size="lg">
+            <Button href={secondaryHref} variant="secondary" size="lg">
               <MessageCircle size={16} />
-              Enviar uma mensagem
+              {secondaryLabel}
             </Button>
           </div>
         </motion.div>

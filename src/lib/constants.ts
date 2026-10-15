@@ -1,65 +1,84 @@
 export const SITE = {
-  name: "BR Tecnologia",
-  tagline: "Software sob medida para negócios que querem evoluir.",
-  url: "https://brtecnologia.com.br",
-  email: "brunosousadias.dev@gmail.com",
+  name: "BR Coder",
+  tagline:
+    "Desenvolvimento de software e infraestrutura gerenciada para empresas que querem crescer.",
+  url: "https://brcoder.com.br",
+  email: "contato@brcoder.com.br",
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Soluções", href: "#solucoes" },
-  { label: "Processo", href: "#processo" },
-  { label: "Projetos", href: "#projetos" },
-  { label: "Sobre", href: "#diferenciais" },
-  { label: "Contato", href: "#contato" },
+  { label: "Início", href: "/" },
+  { label: "Desenvolvimento", href: "/#desenvolvimento" },
+  { label: "Infraestrutura", href: "/infraestrutura" },
+  { label: "Planos", href: "/infraestrutura#planos" },
+  { label: "Projetos", href: "/#projetos" },
+  { label: "Sobre", href: "/#diferenciais" },
+  { label: "Contato", href: "/#contato" },
 ] as const;
 
 export const TRUST_INDICATORS = [
-  "Projetos sob medida",
-  "Web • SaaS • Sistemas • APIs",
-  "Do MVP à escala",
-  "Tecnologia pensada para o negócio",
+  "Software sob medida",
+  "Infraestrutura gerenciada",
+  "Web, SaaS, APIs e cloud",
+  "Monitoramento e manutenção",
 ] as const;
 
 export const SOLUTIONS = [
   {
     icon: "layout",
     title: "Landing Pages",
-    description: "Páginas rápidas, modernas e focadas em conversão.",
+    description: "Páginas rápidas, modernas e com um caminho claro até o contato.",
+    benefit: "A oferta fica compreensível e o visitante sabe qual é o próximo passo.",
+    interest: "Landing Page",
   },
   {
     icon: "monitor",
     title: "Sistemas Web",
-    description: "Sistemas internos, administrativos e operacionais personalizados.",
+    description: "Sistemas internos, administrativos e operacionais feitos para o processo real da empresa.",
+    benefit: "A operação deixa de depender de planilha solta e de retrabalho entre áreas.",
+    interest: "Sistema Web",
   },
   {
     icon: "cloud",
     title: "SaaS",
-    description: "Produtos digitais escaláveis preparados para atender múltiplos clientes.",
+    description: "Plataformas para atender vários clientes, com evolução depois do primeiro uso.",
+    benefit: "O produto nasce com escopo de validação e caminho para crescer sem recomeçar.",
+    interest: "SaaS",
   },
   {
     icon: "users",
     title: "CRM",
-    description: "Sistemas para organizar clientes, vendas, atendimento e processos comerciais.",
+    description: "Organização de clientes, vendas, atendimento e rotina comercial.",
+    benefit: "O histórico da relação fica no sistema, não na memória de uma pessoa.",
+    interest: "CRM",
   },
   {
     icon: "bar-chart",
     title: "Dashboards",
-    description: "Painéis de dados para acompanhar indicadores e tomar decisões.",
+    description: "Painéis para acompanhar indicadores e decidir com o número atualizado.",
+    benefit: "O relatório deixa de ser montado à mão toda vez que alguém pergunta como está o negócio.",
+    interest: "Dashboard",
   },
   {
     icon: "git-merge",
-    title: "Integrações",
-    description: "Conectamos APIs, plataformas e sistemas para eliminar processos manuais.",
+    title: "APIs e integrações",
+    description: "Conexão entre APIs, ERPs, CRMs e outros sistemas que hoje não se falam.",
+    benefit: "A equipe para de copiar dado de uma tela para outra.",
+    interest: "Integração",
   },
   {
     icon: "zap",
-    title: "Automação",
-    description: "Transformamos tarefas repetitivas em fluxos automatizados.",
+    title: "Automação de processos",
+    description: "Tarefas repetitivas viram fluxo com regra, registro e menos erro manual.",
+    benefit: "O tempo da equipe volta para exceção e decisão, não para a mesma etapa todo dia.",
+    interest: "Automação",
   },
   {
     icon: "box",
-    title: "Aplicações Personalizadas",
-    description: "Soluções desenvolvidas especificamente para as necessidades do negócio.",
+    title: "Aplicações sob medida",
+    description: "Software desenhado para a regra do negócio quando uma ferramenta pronta não cabe.",
+    benefit: "O sistema segue o processo da empresa, em vez de a empresa se adaptar à ferramenta.",
+    interest: "Desenvolvimento de software",
   },
 ] as const;
 
@@ -84,6 +103,12 @@ export const DIFFERENTIALS = [
     title: "Comunicação próxima",
     description: "O cliente acompanha o projeto e entende o que está sendo desenvolvido.",
   },
+  {
+    number: "05",
+    title: "Operação depois do lançamento",
+    description:
+      "Quem constrói o software também pode acompanhar servidor, aplicação e rotina — com escopo e horário definidos em proposta.",
+  },
 ] as const;
 
 export const AUDIENCES = [
@@ -107,6 +132,11 @@ export const AUDIENCES = [
     title: "Agências e parceiros",
     description: "Precisam de uma equipe técnica para desenvolver projetos para seus clientes.",
   },
+  {
+    title: "Operação de TI",
+    description:
+      "Precisam de monitoramento, manutenção e administração de cloud sem montar um time só para isso.",
+  },
 ] as const;
 
 export const PROBLEMS = [
@@ -118,6 +148,10 @@ export const PROBLEMS = [
   "Preciso integrar diferentes APIs.",
   "Meu sistema atual não acompanha o crescimento.",
   "Preciso transformar uma ideia em MVP.",
+  "Não sei se o servidor e a API estão no ar.",
+  "O backup existe, mas nunca testei a restauração.",
+  "A conta de cloud cresce sem eu saber o motivo.",
+  "Quando algo falha, o alerta chega tarde demais.",
 ] as const;
 
 export const PROCESS_STEPS = [
@@ -158,8 +192,11 @@ export const TECHNOLOGIES = [
   "Next.js",
   "TypeScript",
   "Node.js",
+  "NestJS",
+  "Java",
   "Python",
   "PostgreSQL",
+  "Prisma",
   "Docker",
   "AWS",
   "APIs REST",
@@ -219,17 +256,52 @@ export const FAQ_ITEMS = [
     answer:
       "Varia conforme escopo e complexidade. Um MVP pode levar de 4 a 8 semanas; sistemas mais robustos, de 2 a 6 meses. Na descoberta inicial, apresentamos um cronograma realista.",
   },
+  {
+    question: "Vocês também cuidam da infraestrutura?",
+    answer:
+      "Sim. Além do desenvolvimento, operamos monitoramento, manutenção, administração de cloud, bancos e backups, e segurança operacional. O que entra em cada contrato depende da avaliação técnica e da proposta.",
+  },
+  {
+    question: "O suporte de infraestrutura é 24 horas?",
+    answer:
+      "Não. Os planos atuais preveem suporte em horário comercial, com limites definidos na proposta. Alertas podem disparar fora desse horário; o atendimento para tratá-los segue o SLA combinado.",
+  },
 ] as const;
 
-export const PROJECT_TYPES = [
-  "Landing Page",
-  "Site",
-  "Sistema Web",
-  "SaaS",
-  "CRM",
-  "Dashboard",
-  "Integração",
-  "Automação",
-  "Aplicativo",
-  "Outro",
+export const INTEREST_GROUPS = [
+  {
+    label: "Desenvolvimento",
+    options: [
+      "Desenvolvimento de software",
+      "Landing Page",
+      "Site",
+      "Sistema Web",
+      "SaaS",
+      "CRM",
+      "Dashboard",
+      "Integração",
+      "Automação",
+      "Aplicativo",
+    ],
+  },
+  {
+    label: "Infraestrutura",
+    options: [
+      "Monitoramento de infraestrutura",
+      "Administração AWS e cloud",
+      "Manutenção de servidores",
+      "Bancos de dados e backups",
+      "Segurança operacional",
+    ],
+  },
+  {
+    label: "Outro",
+    options: ["Outro"],
+  },
 ] as const;
+
+export const INTEREST_OPTIONS = INTEREST_GROUPS.flatMap((group) => group.options);
+
+export function isKnownInterest(value: string) {
+  return (INTEREST_OPTIONS as readonly string[]).includes(value);
+}

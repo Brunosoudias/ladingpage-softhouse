@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { HeroVisual } from "@/components/ui/HeroVisual";
+import { siteConfig } from "@/lib/site-config";
 import { useMotionSafe } from "@/lib/motion";
 
 export function Hero() {
@@ -23,16 +24,16 @@ export function Hero() {
               transition={{ ...fadeUp.transition, duration }}
               className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-[var(--accent-text)]"
             >
-              BR Tecnologia
+              {siteConfig.name}
             </motion.p>
 
             <motion.h1
               {...fadeUp}
               transition={{ ...fadeUp.transition, duration, delay: 0.1 }}
-              className="text-4xl font-semibold leading-[1.1] tracking-tight text-[var(--foreground)] sm:text-5xl lg:text-[3.5rem]"
+              className="text-4xl font-semibold leading-[1.1] tracking-tight text-[var(--foreground)] sm:text-5xl lg:text-[3.25rem]"
             >
-              Seu próximo produto digital{" "}
-              <span className="gradient-accent">começa aqui.</span>
+              Desenvolvimento de software e infraestrutura{" "}
+              <span className="gradient-accent">para empresas que querem crescer.</span>
             </motion.h1>
 
             <motion.p
@@ -40,9 +41,9 @@ export function Hero() {
               transition={{ ...fadeUp.transition, duration, delay: 0.2 }}
               className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[var(--fg-4)] sm:text-lg lg:mx-0"
             >
-              Desenvolvemos sistemas, SaaS, plataformas e integrações sob medida
-              para transformar ideias e problemas de negócio em software que
-              funciona.
+              Criamos sistemas sob medida e cuidamos da infraestrutura tecnológica
+              da sua empresa com monitoramento, manutenção e gestão de ambientes
+              em nuvem.
             </motion.p>
 
             <motion.div
@@ -50,12 +51,12 @@ export function Hero() {
               transition={{ ...fadeUp.transition, duration, delay: 0.3 }}
               className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start"
             >
-              <Button href="#contato" size="lg">
-                Falar sobre meu projeto
+              <Button href="/#contato" size="lg">
+                Solicitar um orçamento
                 <ArrowRight size={16} />
               </Button>
-              <Button href="#solucoes" variant="secondary" size="lg">
-                Ver o que desenvolvemos
+              <Button href="/infraestrutura" variant="secondary" size="lg">
+                Conhecer os serviços de infraestrutura
               </Button>
             </motion.div>
           </div>

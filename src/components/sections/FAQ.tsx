@@ -57,17 +57,29 @@ function FAQItem({
   );
 }
 
-export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+type FAQProps = {
+  id?: string;
+  title?: string;
+  items?: readonly { question: string; answer: string }[];
+  initiallyOpen?: boolean;
+};
+
+export function FAQ({
+  id = "faq",
+  title = "Perguntas frequentes",
+  items = FAQ_ITEMS,
+  initiallyOpen = true,
+}: FAQProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(initiallyOpen ? 0 : null);
   const { fadeUp } = useMotionSafe();
 
   return (
-    <section className="py-16 sm:py-24">
+    <section id={id} className="py-12 sm:py-16">
       <div className="section-padding mx-auto max-w-3xl">
-        <SectionHeading title="Perguntas frequentes" align="center" className="mb-12" />
+        <SectionHeading title={title} align="center" className="mb-12" />
 
         <motion.div {...fadeUp} className="rounded-xl border border-[var(--line)] bg-[var(--panel-2)] px-6">
-          {FAQ_ITEMS.map((item, i) => (
+          {items.map((item, i) => (
             <FAQItem
               key={item.question}
               question={item.question}

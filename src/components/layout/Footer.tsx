@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getNavLinks } from "@/lib/nav";
 import { getWhatsAppUrl, siteConfig } from "@/lib/site-config";
 
@@ -34,6 +35,12 @@ const SOCIAL_ICONS = {
   instagram: InstagramIcon,
   linkedin: LinkedinIcon,
   github: GithubIcon,
+} as const;
+
+const SOCIAL_LABELS = {
+  instagram: "Instagram",
+  linkedin: "LinkedIn",
+  github: "GitHub",
 } as const;
 
 export function Footer() {
@@ -82,12 +89,12 @@ export function Footer() {
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-[var(--fg-4)] transition-colors hover:text-[var(--fg-1)]"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -107,7 +114,7 @@ export function Footer() {
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={key}
+                      aria-label={SOCIAL_LABELS[key]}
                       className="flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--line-strong)] text-[var(--fg-4)] transition-all hover:border-[var(--line-hover)] hover:text-[var(--fg-1)]"
                     >
                       <Icon />
@@ -124,7 +131,7 @@ export function Footer() {
             © {new Date().getFullYear()} {siteConfig.name}. Todos os direitos reservados.
           </p>
           <p className="text-xs text-[var(--fg-5)]">
-            Desenvolvimento de software sob medida
+            Desenvolvimento de software e infraestrutura gerenciada
           </p>
         </div>
       </div>
