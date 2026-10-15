@@ -36,6 +36,10 @@
   --accent-light: #f4f4f5;
   --accent-text: #d4d4d8;
   --accent-glow: rgba(255, 255, 255, 0.08);
+  --gradient-start: #e4e4e7;
+  --gradient-end: #a1a1aa;
+  --gradient-text-1: #e4e4e7;
+  --gradient-text-2: #a1a1aa;
   --selection: rgba(161, 161, 170, 0.35);
 
   --grid-line: rgba(255, 255, 255, 0.03);
@@ -79,6 +83,10 @@
   --accent-light: #18181b;
   --accent-text: #3f3f46;
   --accent-glow: rgba(9, 9, 11, 0.05);
+  --gradient-start: #27272a;
+  --gradient-end: #52525b;
+  --gradient-text-1: #27272a;
+  --gradient-text-2: #52525b;
   --selection: rgba(113, 113, 122, 0.3);
 
   --grid-line: rgba(9, 9, 11, 0.035);
