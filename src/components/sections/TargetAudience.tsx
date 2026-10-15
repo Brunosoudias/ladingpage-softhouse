@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Building2, Rocket, TrendingUp, Layers, Handshake } from "lucide-react";
+import { Building2, Handshake, Layers, Rocket, Server, TrendingUp } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AUDIENCES } from "@/lib/constants";
 import { useMotionSafe } from "@/lib/motion";
 
-const AUDIENCE_ICONS = [Building2, Rocket, TrendingUp, Layers, Handshake];
+const AUDIENCE_ICONS = [Building2, Rocket, TrendingUp, Layers, Handshake, Server];
 
 export function TargetAudience() {
   const { fadeUp, stagger } = useMotionSafe();

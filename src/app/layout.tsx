@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SITE } from "@/lib/constants";
+import { HashScroller } from "@/components/ui/HashScroller";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 
 const geistSans = Geist({
@@ -14,29 +15,33 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const pageTitle = `${siteConfig.name} | Sistemas, SaaS e Software Sob Medida`;
-const pageDescription =
-  "Desenvolvemos sistemas, SaaS, plataformas, integrações e soluções digitais sob medida para transformar ideias e problemas de negócio em software.";
+const description =
+  "Software house para desenvolvimento de software sob medida e infraestrutura gerenciada: sistemas, SaaS, APIs, monitoramento de servidores, manutenção e administração de ambientes em nuvem.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: pageTitle,
-  description: pageDescription,
+  title: {
+    default: `${siteConfig.name} | Desenvolvimento de software e infraestrutura`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description,
   keywords: [
     siteConfig.name,
     "software house",
-    "desenvolvimento de sistemas",
     "desenvolvimento de software",
+    "desenvolvimento de sistemas",
     "sistema sob medida",
-    "empresa de desenvolvimento de software",
-    "desenvolvimento SaaS",
-    "desenvolvimento de plataformas",
-    "integração de sistemas",
+    "monitoramento de servidores",
+    "monitoramento de APIs",
+    "manutenção de infraestrutura de TI",
+    "administração AWS",
+    "infraestrutura cloud",
+    "manutenção de sistemas",
   ],
-  authors: [{ name: SITE.name }],
+  authors: [{ name: siteConfig.name }],
   openGraph: {
-    title: pageTitle,
-    description: pageDescription,
+    title: `${siteConfig.name} | Desenvolvimento de software e infraestrutura`,
+    description,
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: "pt_BR",
@@ -44,13 +49,29 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: pageTitle,
-    description: pageDescription,
+    title: `${siteConfig.name} | Desenvolvimento de software e infraestrutura`,
+    description,
   },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  email: siteConfig.email,
+  description,
+  areaServed: "BR",
+  knowsAbout: [
+    "Desenvolvimento de software",
+    "Infraestrutura gerenciada",
+    "Monitoramento de servidores",
+    "Administração AWS",
+  ],
 };
 
 export default function RootLayout({
@@ -61,17 +82,20 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("br-coder-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}`,
+            __html: `try{var t=localStorage.getItem("br-coder-theme")||localStorage.getItem("br-tecnologia-theme");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}`,
           }}
         />
       </head>
       <body className="relative min-h-full bg-[var(--background)] text-[var(--fg-1)]">
+        <HashScroller />
+        <JsonLd data={organizationLd} />
         <div className="noise-overlay" aria-hidden="true" />
         {children}
       </body>

@@ -135,6 +135,49 @@ body {
   outline-offset: 2px;
 }
 
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.form-error {
+  color: #fecaca;
+}
+
+:root[data-theme="light"] .form-error {
+  color: #991b1b;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-text-1) 0%,
+    var(--gradient-text-2) 50%,
+    var(--gradient-text-1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .glass {
   background: var(--panel-3);
   border: 1px solid var(--line-strong);
