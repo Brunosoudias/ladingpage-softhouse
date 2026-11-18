@@ -8,7 +8,6 @@ import { Differentials } from "@/components/sections/Differentials";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { FAQ } from "@/components/sections/FAQ";
 import { ContactForm } from "@/components/sections/ContactForm";
-import { PricingPlans } from "@/components/sections/PricingPlans";
 import { FAQ_ITEMS } from "@/lib/constants";
 
 const HOME_FAQ = FAQ_ITEMS.filter((item) =>
@@ -33,7 +32,6 @@ export default function Home() {
         <TrustIndicators />
         <Solutions />
         <Differentials />
-        <PricingPlans id="planos-referencia" variant="teaser" />
         <FAQ
           title="Perguntas frequentes"
           items={HOME_FAQ}

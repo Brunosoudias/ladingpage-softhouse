@@ -32,11 +32,16 @@
   --btn-fg: #09090b;
   --btn-ring: rgba(255, 255, 255, 0.1);
 
-  --accent: #e4e4e7;
-  --accent-light: #f4f4f5;
-  --accent-text: #d4d4d8;
-  --accent-glow: rgba(255, 255, 255, 0.08);
-  --selection: rgba(161, 161, 170, 0.35);
+  --accent: #6b8fce;
+  --accent-light: #8aa7db;
+  --accent-text: #6b8fce;
+  --accent-soft: rgba(107, 143, 206, 0.16);
+  --accent-glow: rgba(107, 143, 206, 0.12);
+  --gradient-start: #8aa7db;
+  --gradient-end: #6b8fce;
+  --gradient-text-1: #e4e4e7;
+  --gradient-text-2: #6b8fce;
+  --selection: rgba(107, 143, 206, 0.34);
 
   --grid-line: rgba(255, 255, 255, 0.03);
 
@@ -75,11 +80,16 @@
   --btn-fg: #ffffff;
   --btn-ring: rgba(9, 9, 11, 0.1);
 
-  --accent: #27272a;
-  --accent-light: #18181b;
-  --accent-text: #3f3f46;
-  --accent-glow: rgba(9, 9, 11, 0.05);
-  --selection: rgba(113, 113, 122, 0.3);
+  --accent: #2f6bb5;
+  --accent-light: #4a82c4;
+  --accent-text: #1e4f96;
+  --accent-soft: rgba(47, 107, 181, 0.12);
+  --accent-glow: rgba(47, 107, 181, 0.1);
+  --gradient-start: #1e4f96;
+  --gradient-end: #2f6bb5;
+  --gradient-text-1: #27272a;
+  --gradient-text-2: #2f6bb5;
+  --selection: rgba(47, 107, 181, 0.22);
 
   --grid-line: rgba(9, 9, 11, 0.035);
 
@@ -91,6 +101,7 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
+  --color-accent-text: var(--accent-text);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -131,7 +142,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent-light);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 

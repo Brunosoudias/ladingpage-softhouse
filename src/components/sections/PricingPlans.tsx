@@ -20,7 +20,7 @@ export function PricingPlans({ id = "planos", variant = "full" }: PricingPlansPr
   const teaser = variant === "teaser";
 
   return (
-    <section id={id} className={teaser ? "py-12 sm:py-16" : "py-16 sm:py-24"}>
+      <section id={id} className="py-16 sm:py-24">
       <div className="section-padding mx-auto max-w-7xl">
         <SectionHeading
           label="Planos de infraestrutura"
@@ -41,7 +41,7 @@ export function PricingPlans({ id = "planos", variant = "full" }: PricingPlansPr
                   "flex flex-col rounded-xl border bg-[var(--panel-2)]",
                   teaser ? "p-5" : "p-6 sm:p-8",
                   i === 1
-                    ? "border-[var(--line-hover)]"
+                    ? "border-[var(--accent)]/45"
                     : "border-[var(--line)]"
                 )}
               >
@@ -55,7 +55,7 @@ export function PricingPlans({ id = "planos", variant = "full" }: PricingPlansPr
                   <ul className="mt-6 flex-1 space-y-3">
                     {features.map((feature) => (
                       <li key={feature} className="flex gap-2 text-sm leading-relaxed text-[var(--fg-3)]">
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--fg-5)]" aria-hidden="true" />
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--accent)]" aria-hidden="true" />
                         {feature}
                       </li>
                     ))}
@@ -80,7 +80,7 @@ export function PricingPlans({ id = "planos", variant = "full" }: PricingPlansPr
         {teaser ? (
           <p className="mx-auto mt-6 max-w-3xl text-sm leading-relaxed text-[var(--fg-5)]">
             {PLAN_DISCLAIMERS.join(" ")}{" "}
-            <Link href="/infraestrutura#planos" className="text-[var(--fg-2)] underline-offset-4 hover:underline">
+            <Link href="/infraestrutura#planos" className="text-[var(--accent-text)] underline-offset-4 hover:underline">
               Ver o que cada plano inclui
             </Link>
             .

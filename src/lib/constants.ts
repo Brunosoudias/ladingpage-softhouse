@@ -10,7 +10,6 @@ export const NAV_LINKS = [
   { label: "Início", href: "/" },
   { label: "Desenvolvimento", href: "/#desenvolvimento" },
   { label: "Infraestrutura", href: "/infraestrutura" },
-  { label: "Planos", href: "/infraestrutura#planos" },
   { label: "Projetos", href: "/#projetos" },
   { label: "Sobre", href: "/#diferenciais" },
   { label: "Contato", href: "/#contato" },
@@ -107,7 +106,7 @@ export const DIFFERENTIALS = [
     number: "05",
     title: "Operação depois do lançamento",
     description:
-      "Quem constrói o software também pode acompanhar servidor, aplicação e rotina — com escopo e horário definidos em proposta.",
+      "Quem constrói o software também pode acompanhar servidor, aplicação e rotina, com escopo e horário definidos em proposta.",
   },
 ] as const;
 

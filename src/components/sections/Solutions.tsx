@@ -50,11 +50,13 @@ function ServiceCard({
   title,
   description,
   delay,
+  featured = false,
 }: {
   icon: LucideIcon;
   title: string;
   description: string;
   delay: number;
+  featured?: boolean;
 }) {
   const { fadeUp } = useMotionSafe();
 
@@ -64,14 +66,17 @@ function ServiceCard({
       transition={{ ...fadeUp.transition, delay }}
       className={cn(
         "glass flex gap-3 rounded-xl p-4 transition-colors duration-300",
-        "hover:bg-[var(--panel-hover)]"
+        "hover:bg-[var(--panel-hover)]",
+        featured && "sm:col-span-2 sm:p-6"
       )}
     >
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--panel-hover)] text-[var(--fg-2)]">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-soft)] text-[var(--accent-text)]">
         <Icon size={18} aria-hidden="true" />
       </div>
       <div>
-        <h3 className="text-sm font-medium text-[var(--fg-1)]">{title}</h3>
+        <h3 className={cn("font-medium text-[var(--fg-1)]", featured ? "text-base" : "text-sm")}>
+          {title}
+        </h3>
         <p className="mt-1 text-sm leading-relaxed text-[var(--fg-4)]">{description}</p>
       </div>
     </motion.article>
@@ -83,7 +88,7 @@ export function Solutions() {
 
   return (
     <div id="solucoes">
-      <section id="desenvolvimento" className="py-12 sm:py-16">
+      <section id="desenvolvimento" className="py-16 sm:py-24">
         <div className="section-padding mx-auto max-w-7xl">
           <SectionHeading
             label="Desenvolvimento de software"
@@ -113,7 +118,7 @@ export function Solutions() {
         </div>
       </section>
 
-      <section className="border-y border-[var(--line)] bg-[var(--background-alt)] py-12 sm:py-16">
+      <section className="border-y border-[var(--line)] bg-[var(--background-alt)] py-16 sm:py-24">
         <div className="section-padding mx-auto max-w-7xl">
           <SectionHeading
             label="Infraestrutura gerenciada"
@@ -130,13 +135,14 @@ export function Solutions() {
                 title={service.title}
                 description={service.benefit}
                 delay={i * stagger}
+                featured={i === 0}
               />
             ))}
           </div>
 
           <div className="mt-8">
-            <Button href="/infraestrutura" variant="secondary">
-              Conhecer os serviços de infraestrutura
+            <Button href="/infraestrutura" variant="secondary" className="whitespace-nowrap">
+              Ver infraestrutura
               <ArrowRight size={16} />
             </Button>
           </div>

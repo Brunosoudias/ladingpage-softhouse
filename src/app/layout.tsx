@@ -64,6 +64,7 @@ const organizationLd = {
   name: siteConfig.name,
   url: siteConfig.url,
   email: siteConfig.email,
+  ...(siteConfig.whatsapp ? { telephone: `+${siteConfig.whatsapp}` } : {}),
   description,
   areaServed: "BR",
   knowsAbout: [

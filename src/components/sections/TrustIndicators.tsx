@@ -13,14 +13,14 @@ export function TrustIndicators() {
         {...fadeIn}
         className="section-padding mx-auto max-w-7xl py-6"
       >
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
           {TRUST_INDICATORS.map((item, i) => (
-            <div key={item} className="flex items-center gap-8">
+            <div key={item} className="flex items-center gap-6">
               <span className="text-xs font-medium tracking-wide text-[var(--fg-4)] sm:text-sm">
                 {item}
               </span>
               {i < TRUST_INDICATORS.length - 1 && (
-                <span className="hidden h-1 w-1 rounded-full bg-zinc-700 sm:block" aria-hidden="true" />
+                <span className="hidden h-1 w-1 rounded-full bg-[var(--accent)]/70 sm:block" aria-hidden="true" />
               )}
             </div>
           ))}

@@ -31,7 +31,7 @@ export function SectionHeading({
       )}
     >
       {label && (
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-accent-light">
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-[var(--accent-text)]">
           {label}
         </p>
       )}

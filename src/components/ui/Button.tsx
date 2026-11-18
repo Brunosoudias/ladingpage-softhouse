@@ -10,8 +10,8 @@ const variants = {
   primary:
     "bg-[var(--btn-bg)] text-[var(--btn-fg)] hover:bg-[var(--btn-bg-hover)] shadow-[0_0_0_1px_var(--btn-ring),0_1px_2px_rgba(0,0,0,0.3)]",
   secondary:
-    "bg-transparent text-[var(--fg-1)] border border-[var(--line-strong)] hover:border-[var(--line-hover)] hover:bg-[var(--panel-hover)]",
-  ghost: "bg-transparent text-[var(--fg-4)] hover:text-[var(--fg-1)] hover:bg-[var(--panel-hover)]",
+    "bg-transparent text-[var(--fg-1)] border border-[var(--line-strong)] hover:border-[var(--accent)]/55 hover:bg-[var(--accent-soft)]",
+  ghost: "bg-transparent text-[var(--fg-4)] hover:text-[var(--accent-text)] hover:bg-[var(--panel-hover)]",
 };
 
 const sizes = {
