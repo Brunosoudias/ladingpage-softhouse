@@ -9,7 +9,9 @@ export const siteConfig = {
   email: trim(process.env.NEXT_PUBLIC_CONTACT_EMAIL) ?? "brcodertecnologia@gmail.com",
   whatsapp: trim(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER) ?? "5562999362371",
   social: {
-    instagram: trim(process.env.NEXT_PUBLIC_INSTAGRAM_URL),
+    instagram:
+      trim(process.env.NEXT_PUBLIC_INSTAGRAM_URL) ??
+      "https://instagram.com/brcoderoficial",
     linkedin: trim(process.env.NEXT_PUBLIC_LINKEDIN_URL),
     github: trim(process.env.NEXT_PUBLIC_GITHUB_URL),
   },

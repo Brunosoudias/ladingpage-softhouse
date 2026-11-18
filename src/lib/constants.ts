@@ -3,7 +3,7 @@ export const SITE = {
   tagline:
     "Desenvolvimento de software e infraestrutura gerenciada para empresas que querem crescer.",
   url: "https://brcoder.com.br",
-  email: "contato@brcoder.com.br",
+  email: "brcodertecnologia@gmail.com",
 } as const;
 
 export const NAV_LINKS = [
