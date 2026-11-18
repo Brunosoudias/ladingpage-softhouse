@@ -56,7 +56,8 @@ export function Header() {
       )}
     >
       <div className="section-padding mx-auto flex h-16 max-w-7xl items-center justify-between lg:h-[4.5rem]">
-        <Link href="/" className="group flex items-center gap-2.5" aria-label={`${siteConfig.name} — início`}>
+        <Link href="/" className="group flex items-center gap-2.5" aria-label={`${siteConfig.name}, início`}>
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true" />
           <span className="text-sm font-semibold tracking-tight text-[var(--fg-1)]">
             {siteConfig.name}
           </span>
@@ -70,7 +71,7 @@ export function Header() {
               aria-current={isCurrent(link.href) ? "page" : undefined}
               className={cn(
                 "text-sm transition-colors hover:text-[var(--fg-1)]",
-                isCurrent(link.href) ? "text-[var(--fg-1)]" : "text-[var(--fg-4)]"
+                isCurrent(link.href) ? "text-[var(--accent-text)]" : "text-[var(--fg-4)]"
               )}
             >
               {link.label}
@@ -113,7 +114,10 @@ export function Header() {
               key={link.href}
               href={link.href}
               aria-current={isCurrent(link.href) ? "page" : undefined}
-              className="rounded-lg px-4 py-3 text-base text-[var(--fg-3)] transition-colors hover:bg-[var(--panel-hover)] hover:text-[var(--fg-1)]"
+              className={cn(
+                "rounded-lg px-4 py-3 text-base transition-colors hover:bg-[var(--panel-hover)] hover:text-[var(--fg-1)]",
+                isCurrent(link.href) ? "text-[var(--accent-text)]" : "text-[var(--fg-3)]"
+              )}
               onClick={closeMenu}
             >
               {link.label}

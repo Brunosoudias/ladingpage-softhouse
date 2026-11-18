@@ -46,7 +46,7 @@ export function Problems({
               transition={{ ...fadeUp.transition, delay: i * stagger }}
               className="flex items-start gap-3 rounded-lg border border-[var(--line)] bg-[var(--panel-2)] px-4 py-3.5 transition-colors hover:border-[var(--line-hover)] hover:bg-[var(--panel-hover)]"
             >
-              <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[var(--fg-5)]" />
+              <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[var(--accent-text)]" />
               <p className="text-sm text-[var(--fg-4)]">&ldquo;{problem}&rdquo;</p>
             </motion.div>
           ))}

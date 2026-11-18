@@ -7,7 +7,7 @@ export const siteConfig = {
     "Desenvolvimento de software e infraestrutura gerenciada para empresas que querem crescer.",
   url: trim(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://brcoder.com.br",
   email: trim(process.env.NEXT_PUBLIC_CONTACT_EMAIL) ?? "brcodertecnologia@gmail.com",
-  whatsapp: trim(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER),
+  whatsapp: trim(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER) ?? "5562999362371",
   social: {
     instagram:
       trim(process.env.NEXT_PUBLIC_INSTAGRAM_URL) ??
@@ -16,6 +16,17 @@ export const siteConfig = {
     github: trim(process.env.NEXT_PUBLIC_GITHUB_URL),
   },
 } as const;
+
+export function formatWhatsAppDisplay(digits: string) {
+  const local = digits.startsWith("55") && digits.length > 11 ? digits.slice(2) : digits;
+  if (local.length === 11) {
+    return `(${local.slice(0, 2)}) ${local.slice(2, 7)}-${local.slice(7)}`;
+  }
+  if (local.length === 10) {
+    return `(${local.slice(0, 2)}) ${local.slice(2, 6)}-${local.slice(6)}`;
+  }
+  return digits;
+}
 
 export function getWhatsAppUrl(message?: string) {
   if (!siteConfig.whatsapp) return null;

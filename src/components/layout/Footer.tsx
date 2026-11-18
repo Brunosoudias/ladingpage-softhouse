@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getNavLinks } from "@/lib/nav";
-import { getWhatsAppUrl, siteConfig } from "@/lib/site-config";
+import { formatWhatsAppDisplay, getWhatsAppUrl, siteConfig } from "@/lib/site-config";
 
 function InstagramIcon() {
   return (
@@ -57,6 +57,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true" />
               <span className="text-sm font-semibold text-[var(--fg-1)]">{siteConfig.name}</span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-[var(--fg-4)]">
@@ -76,7 +77,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="w-fit text-[var(--fg-4)] transition-colors hover:text-[var(--fg-1)]"
                 >
-                  WhatsApp
+                  WhatsApp {formatWhatsAppDisplay(siteConfig.whatsapp ?? "")}
                 </a>
               )}
             </div>

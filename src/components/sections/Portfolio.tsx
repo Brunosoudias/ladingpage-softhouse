@@ -102,7 +102,7 @@ function ProjectCard({
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-1.5 text-sm text-[var(--fg-4)] transition-colors group-hover:text-[var(--accent-text)]"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm text-[var(--fg-4)] transition-colors group-hover:text-[var(--accent)]"
           >
             Ver projeto
             <ArrowUpRight

@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense, useState, type FormEvent } from "react";
+import { Suspense, useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { Send } from "lucide-react";
+import { Check, ChevronDown, Send } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { isKnownPlan } from "@/data/infrastructure";
 import { INTEREST_GROUPS, isKnownInterest } from "@/lib/constants";
@@ -21,7 +21,7 @@ type FormData = {
   website: string;
 };
 
-type FieldName = "name" | "email" | "whatsapp" | "projectType" | "message";
+type FieldName = "name" | "company" | "email" | "whatsapp" | "projectType" | "message";
 type FieldErrors = Partial<Record<FieldName, string>>;
 
 const initialForm: FormData = {
@@ -35,7 +35,7 @@ const initialForm: FormData = {
 };
 
 const fieldClass =
-  "w-full rounded-lg border border-[var(--line-strong)] bg-[var(--panel-3)] px-4 py-2.5 text-sm text-[var(--fg-1)] placeholder:text-[var(--fg-5)] transition-colors focus:border-[var(--line-hover)] focus:outline-none aria-[invalid=true]:border-red-400/70";
+  "w-full rounded-lg border border-[var(--line-strong)] bg-[var(--panel-3)] px-4 py-2.5 text-sm text-[var(--fg-1)] placeholder:text-[var(--fg-5)] transition-colors focus:border-[var(--accent)] focus:outline-none aria-[invalid=true]:border-red-400/70";
 
 function formatPhone(value: string): string {
   const digits = value.replace(/\D/g, "").slice(0, 11);
@@ -66,20 +66,37 @@ function buildWhatsAppMessage(form: FormData, plan?: string): string {
   return lines.filter(Boolean).join("\n");
 }
 
+const EMAIL_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const NAME_MAX = 40;
+
+function isCellPhone(digits: string) {
+  if (digits.length !== 11) return false;
+  const ddd = Number(digits.slice(0, 2));
+  return ddd >= 11 && ddd <= 99 && digits[2] === "9";
+}
+
 function validate(form: FormData): FieldErrors {
   const errors: FieldErrors = {};
+  const name = form.name.trim();
+  const company = form.company.trim();
 
-  if (form.name.trim().length < 2) {
+  if (name.length < 2) {
     errors.name = "Informe seu nome.";
+  } else if (name.length > NAME_MAX) {
+    errors.name = "O nome pode ter no máximo 40 caracteres.";
   }
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
-    errors.email = "Informe um e-mail válido.";
+  if (company.length > NAME_MAX) {
+    errors.company = "O nome da empresa pode ter no máximo 40 caracteres.";
+  }
+
+  if (!EMAIL_PATTERN.test(form.email.trim()) || form.email.includes("..")) {
+    errors.email = "Informe um e-mail válido, com @ e domínio.";
   }
 
   const phoneDigits = form.whatsapp.replace(/\D/g, "");
-  if (phoneDigits && (phoneDigits.length < 10 || phoneDigits.length > 11)) {
-    errors.whatsapp = "Informe DDD e número, com 10 ou 11 dígitos.";
+  if (!isCellPhone(phoneDigits)) {
+    errors.whatsapp = "Informe um celular com DDD, no formato (00) 90000-0000.";
   }
 
   if (!form.projectType || !isKnownInterest(form.projectType)) {
@@ -99,6 +116,178 @@ function FieldError({ id, message }: { id: string; message?: string }) {
     <p id={id} className="form-error mt-1.5 text-xs">
       {message}
     </p>
+  );
+}
+
+const SERVICE_OPTIONS = INTEREST_GROUPS.flatMap((group) => [...group.options]);
+
+function ServiceSelect({
+  id,
+  value,
+  invalid,
+  describedBy,
+  onChange,
+}: {
+  id: string;
+  value: string;
+  invalid: boolean;
+  describedBy?: string;
+  onChange: (value: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(value);
+  const [openUp, setOpenUp] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const listId = `${id}-list`;
+
+  const optionId = (option: string) => `${id}-opt-${SERVICE_OPTIONS.indexOf(option as (typeof SERVICE_OPTIONS)[number])}`;
+
+  useEffect(() => {
+    if (!open) return;
+
+    const place = () => {
+      const rect = rootRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      setOpenUp(window.innerHeight - rect.bottom < 280 && rect.top > 280);
+    };
+
+    const onPointer = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+
+    place();
+    document.addEventListener("pointerdown", onPointer);
+    window.addEventListener("resize", place);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      window.removeEventListener("resize", place);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open || !active) return;
+    const index = SERVICE_OPTIONS.indexOf(active as (typeof SERVICE_OPTIONS)[number]);
+    if (index < 0) return;
+    document.getElementById(`${id}-opt-${index}`)?.scrollIntoView({ block: "nearest" });
+  }, [open, active, id]);
+
+  const move = (direction: 1 | -1) => {
+    const current = SERVICE_OPTIONS.indexOf(active as (typeof SERVICE_OPTIONS)[number]);
+    const start = current === -1 ? (direction === 1 ? -1 : 0) : current;
+    const next = Math.min(SERVICE_OPTIONS.length - 1, Math.max(0, start + direction));
+    setActive(SERVICE_OPTIONS[next]);
+  };
+
+  const choose = (option: string) => {
+    onChange(option);
+    setOpen(false);
+  };
+
+  const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (!open && ["ArrowDown", "ArrowUp", "Enter", " "].includes(event.key)) {
+      event.preventDefault();
+      setActive(value || SERVICE_OPTIONS[0]);
+      setOpen(true);
+      return;
+    }
+
+    if (!open) return;
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      move(1);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      move(-1);
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      setActive(SERVICE_OPTIONS[0]);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      setActive(SERVICE_OPTIONS[SERVICE_OPTIONS.length - 1]);
+    } else if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      if (active) choose(active);
+    } else if (event.key === "Escape") {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === "Tab") {
+      setOpen(false);
+    }
+  };
+
+  return (
+    <div ref={rootRef} className="relative">
+      <button
+        id={id}
+        type="button"
+        role="combobox"
+        aria-expanded={open}
+        aria-controls={listId}
+        aria-haspopup="listbox"
+        aria-invalid={invalid || undefined}
+        aria-describedby={describedBy}
+        aria-activedescendant={open && active ? optionId(active) : undefined}
+        onClick={() => {
+          setActive(value || SERVICE_OPTIONS[0]);
+          setOpen((current) => !current);
+        }}
+        onKeyDown={onKeyDown}
+        className={cn(
+          fieldClass,
+          "flex items-center justify-between gap-3 text-left",
+          !value && "text-[var(--fg-5)]"
+        )}
+      >
+        <span className="truncate">{value || "Selecione o serviço"}</span>
+        <ChevronDown
+          className={cn("size-4 shrink-0 text-[var(--fg-5)] transition-transform", open && "rotate-180")}
+          aria-hidden
+        />
+      </button>
+
+      {open && (
+        <div
+          id={listId}
+          role="listbox"
+          aria-labelledby={`${id}-label`}
+          className={cn(
+            "absolute z-30 max-h-72 w-full overflow-auto rounded-lg border border-[var(--line-strong)] bg-[var(--panel-opaque)] py-1 shadow-[0_16px_40px_rgba(0,0,0,0.28)]",
+            openUp ? "bottom-full mb-1.5" : "top-full mt-1.5"
+          )}
+        >
+          {INTEREST_GROUPS.map((group) => (
+            <div key={group.label} role="group" aria-label={group.label}>
+              <p className="px-3 pt-2.5 pb-1 text-[11px] font-medium tracking-wide text-[var(--fg-5)]">
+                {group.label}
+              </p>
+              {group.options.map((option) => {
+                const selected = option === value;
+                const current = option === active;
+                return (
+                  <button
+                    key={option}
+                    id={optionId(option)}
+                    type="button"
+                    role="option"
+                    aria-selected={selected}
+                    onMouseEnter={() => setActive(option)}
+                    onClick={() => choose(option)}
+                    className={cn(
+                      "flex w-full items-center gap-3 px-3 py-2 text-left text-sm text-[var(--fg-1)]",
+                      current && "bg-[var(--panel-hover)]"
+                    )}
+                  >
+                    <span className="min-w-0 flex-1">{option}</span>
+                    {selected && <Check className="size-3.5 shrink-0 text-[var(--accent-text)]" aria-hidden />}
+                  </button>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -187,6 +376,7 @@ function ContactFormFields({
                 type="text"
                 autoComplete="name"
                 required
+                maxLength={NAME_MAX}
                 value={form.name}
                 aria-invalid={Boolean(errors.name)}
                 aria-describedby={errors.name ? "name-error" : undefined}
@@ -205,11 +395,15 @@ function ContactFormFields({
                 name="company"
                 type="text"
                 autoComplete="organization"
+                maxLength={NAME_MAX}
                 value={form.company}
+                aria-invalid={Boolean(errors.company)}
+                aria-describedby={errors.company ? "company-error" : undefined}
                 onChange={(e) => updateField("company", e.target.value)}
                 className={fieldClass}
                 placeholder="Nome da empresa"
               />
+              <FieldError id="company-error" message={errors.company} />
             </div>
             <div>
               <label htmlFor="email" className="mb-1.5 block text-sm text-[var(--fg-4)]">
@@ -232,7 +426,7 @@ function ContactFormFields({
             </div>
             <div>
               <label htmlFor="whatsapp" className="mb-1.5 block text-sm text-[var(--fg-4)]">
-                WhatsApp <span className="text-[var(--fg-5)]">(opcional)</span>
+                WhatsApp
               </label>
               <input
                 id="whatsapp"
@@ -240,6 +434,7 @@ function ContactFormFields({
                 type="tel"
                 inputMode="numeric"
                 autoComplete="tel"
+                required
                 maxLength={15}
                 value={form.whatsapp}
                 aria-invalid={Boolean(errors.whatsapp)}
@@ -253,32 +448,16 @@ function ContactFormFields({
           </div>
 
           <div className="mt-5">
-            <label htmlFor="projectType" className="mb-1.5 block text-sm text-[var(--fg-4)]">
+            <label id="projectType-label" htmlFor="projectType" className="mb-1.5 block text-sm text-[var(--fg-4)]">
               Serviço de interesse
             </label>
-            <select
+            <ServiceSelect
               id="projectType"
-              name="projectType"
-              required
               value={form.projectType}
-              aria-invalid={Boolean(errors.projectType)}
-              aria-describedby={errors.projectType ? "projectType-error" : undefined}
-              onChange={(e) => updateField("projectType", e.target.value)}
-              className={fieldClass}
-            >
-              <option value="" className="bg-[var(--panel-opaque)]">
-                Selecione o serviço
-              </option>
-              {INTEREST_GROUPS.map((group) => (
-                <optgroup key={group.label} label={group.label}>
-                  {group.options.map((option) => (
-                    <option key={option} value={option} className="bg-[var(--panel-opaque)]">
-                      {option}
-                    </option>
-                  ))}
-                </optgroup>
-              ))}
-            </select>
+              invalid={Boolean(errors.projectType)}
+              describedBy={errors.projectType ? "projectType-error" : undefined}
+              onChange={(value) => updateField("projectType", value)}
+            />
             <FieldError id="projectType-error" message={errors.projectType} />
           </div>
 
